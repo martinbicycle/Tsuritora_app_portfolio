@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  
-  root to: "home#top"
+
+  root to: "homes#top"
+  get "homes/about" => "homes#about" 
   
 devise_for :admins, controllers: {
   sessions:      'admins/sessions',
@@ -12,4 +13,21 @@ devise_for :users, controllers: {
   passwords:     'users/passwords',
   registrations: 'users/registrations'
 }
+resources :users, only: [:show, :edit, :update] do
+  resources :tackles, only: [:new, :create, :destroy]
+  resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+    get '/search', to: 'search#search'
+end
+
+resources :posts do
+  resources :favorites, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
+end
+
+resources :columns
+resources :contacts, only: [:index, :show, :new, :create]
+
+
 end

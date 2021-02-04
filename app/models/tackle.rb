@@ -1,0 +1,2 @@
+class Tackle < ApplicationRecord
+end

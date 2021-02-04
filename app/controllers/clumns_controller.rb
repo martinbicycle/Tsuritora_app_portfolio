@@ -1,0 +1,2 @@
+class ClumnsController < ApplicationController
+end

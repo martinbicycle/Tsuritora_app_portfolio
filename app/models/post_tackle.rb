@@ -1,0 +1,2 @@
+class PostTackle < ApplicationRecord
+end

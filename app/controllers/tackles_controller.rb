@@ -1,0 +1,2 @@
+class TacklesController < ApplicationController
+end

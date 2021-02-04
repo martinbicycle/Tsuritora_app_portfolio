@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TsuritoraApp</title>
+    <title>Tsuritora</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,51 @@
   </head>
 
   <body>
+    <% if admin_signed_in? %>
+      <header>
+        <div>
+          <%= link_to 'つりトラ', root_path %>
+          <ul class="flex">
+            <li><%= link_to '問い合わせ一覧', contacts_path %></li>
+            <li><%= link_to 'コラム', columns_path %></li>
+            <li><%= link_to 'コラムの投稿', new_contact_path %></li>
+            <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+          </ul>
+        </div>
+      </header>
+    <% elsif user_signed_in? %>
+      <header>
+        <div>
+          <%= link_to 'つりトラ', root_path %>
+          <ul class="flex">
+            <li><%= link_to '自分の釣果', user_path(current_user) %></li>
+            <li><%= link_to 'みんなの釣果', posts_path %></li>
+            <li><%= link_to '釣果を投稿する', new_post_path %></li>
+            <li><%= link_to 'コラム', columns_path %></li>
+            <li><%= link_to 'つりトラの使い方', homes_about_path %></li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </div>
+      </header>
+    <% else %>
+      <header>
+        <div>
+          <%= link_to 'つりトラ', root_path %>
+          <ul>
+            <li><%= link_to 'みんなの釣果', posts_path %></li>
+            <li><%= link_to 'つりトラの使い方', homes_about_path %></li>
+            <li><%= link_to 'コラム', columns_path %></li>
+            <li><%= link_to '新規登録', new_user_registration_path %></li>
+            <li><%= link_to 'ログイン', new_user_session_path %></li>
+          </ul>
+        </div>
+      </header>
+    <% end %>
+
+
+
+
+
     <%= yield %>
   </body>
 </html>

@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'columns/index'
+  get 'columns/show'
+  get 'columns/new'
+  get 'columns/edit'
   root to: "homes#top"
-  get "homes/about" => "homes#about" 
-  
+  get "homes/about" => "homes#about"
+  get '/search', to: 'search#search'
+
 devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
@@ -18,7 +23,6 @@ resources :users, only: [:show, :edit, :update] do
   resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
-    get '/search', to: 'search#search'
 end
 
 resources :posts do

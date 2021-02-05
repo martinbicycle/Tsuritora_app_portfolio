@@ -30,8 +30,10 @@
       <header>
         <nav>
           <div>
-                        <h1>
-              <%= link_to 'つりトラ', root_path %>
+            <h1>
+              <%= link_to root_path do %>
+                <%= image_tag 'tsuritora_logo.png', size: '180x90' %>
+              <% end %>
             </h1>
             <ul class="navbar-nav">
               <li><%= link_to '自分の釣果', user_path(current_user) %></li>

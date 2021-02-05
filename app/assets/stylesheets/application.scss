@@ -13,3 +13,38 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+
+
+.wrapper{
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 120px;/*←footerの高さ*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
+
+header {
+  width: 100%;
+    background-color: #FF9933;
+    color: #fff;
+    padding: 30px 0;
+    top: 0;
+}
+
+
+.li {
+  display: inline-block
+}
+
+
+footer{
+    width: 100%;
+    background-color: #FF9933;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+    position: absolute;
+    bottom: 0; 
+}

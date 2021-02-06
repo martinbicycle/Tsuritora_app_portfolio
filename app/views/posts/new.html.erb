@@ -8,7 +8,7 @@
           <tr><td><%= f.label :写真 %></td></tr>
           <tr><td><%= f.attachment_field :image, class: "btn btn-danger", class: "form-control" %></td></tr>
           <tr></tr><td><%= f.label :釣った日, class: 'control-label' %></td></tr>
-        	<tr><td><%= f.datetime_field :created_at, class: 'form-control' %></td></tr>
+        	<tr><td><%= f.datetime_field :fish_time, class: 'form-control' %></td></tr>
           <tr><td><%= f.label :魚種 %></td></tr>
           <tr></tr><td><%= f.text_field :name, autofocus: true, autocomplete: "魚種", :placeholder => "アジ、スズキ、サバ、メバル、ハゼ...etc", class: "form-control" %></td></tr>
           <tr><td><%= f.label :サイズ %></td></tr>

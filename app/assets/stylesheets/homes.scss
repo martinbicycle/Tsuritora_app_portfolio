@@ -1,59 +1,179 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.balloon3-left {
-  position: relative;
-  display: inline-block;
-  margin: 1.5em 0 1.5em 15px;
-  padding: 0 5px;
-  width: 90px;
-  height: 90px;
-  line-height: 90px;
-  text-align: center;
-  color: #FFF;
-  font-size: 20px;
-  font-weight: bold;
-  background: #ffcc75;
-  border-radius: 50%;
-  box-sizing: border-box;
+
+.background-image {
+  background-image: url("sea.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-.balloon3-left:before {
+
+
+.bln {
+width: 100%;
+margin: 10px auto;
+padding: 10px;
+box-sizing: border-box;
+display: flex;
+align-items: center;
+overflow: hidden;
+}
+@media (max-width:480px) {
+.bln {
+padding: 0;
+}
+}
+
+/* 左右アイコンのイメージサイズと配置 */
+.bln:before {
+content: "";
+width: 200px;
+height: 200px;
+background: no-repeat left center / contain;
+/* display: inline-block; */
+}
+@media (max-width:480px) {
+.bln:before {
+width: 80px;
+height: 80px;
+}
+}
+
+/* 左アイコンのイメージ配置 画像100~200pxくらい */
+.bln.hidari:before {
+background-image: url("okiami.png") /*画像ファイル場所を記入*/
+}
+
+/* 右アイコンのイメージ配置 画像*/
+.bln.migi:before {
+background-image: url("torachan_happy.png") /*画像ファイル場所を記入*/
+}
+
+/* 吹き出し中の文章アウトライン */
+.purplesays {
+  position: relative;
+  max-width: calc(100% - 170px);
+  padding: .6rem 1.2rem;
+  border: solid 2px #fff;
+  border-radius: 1.2rem;
+  background-color: #fff;
+}
+@media (max-width:480px) {
+.purplesays {
+margin: 0;
+max-width: calc(100% - 125px);
+}
+}
+
+/* 吹き出し口 尖ってるところのあしらい */
+.purplesays::before {
+content: "";
+position: absolute;
+top: 50%;
+left: -16px;
+margin-top: -8px;
+border: 8px solid transparent;
+border-right: 10px solid #fff;
+z-index: 2;
+}
+.purplesays::after {
   content: "";
   position: absolute;
   top: 50%;
-  left: -25px;
-  margin-top: -15px;
-  border: 15px solid transparent;
-  border-right: 15px solid #ffcc75;
-  z-index: 0;
+  left: -21px;
+  margin-top: -9px;
+  border: 9px solid transparent;
+  border-right: 12px solid #fff;
+  z-index: 1;
 }
 
+/* 左のアイコン配置指定 吹き出し反転など */
+.bln.fxd--rr .purplesays:before,
+.bln.fxd--rr .purplesays:after {
+transform: scale(-1, 1);
 
-.balloon3-right {
+}
+
+/* 左のアイコンから 吹き出し反転 */
+.bln.fxd--rr .purplesays:before {
+left: inherit;
+right: -16px;
+}
+.bln.fxd--rr .purplesays:after {
+left: inherit;
+right: -21px;
+}
+
+/*吹き出内の調整用*/
+.purplesays p {
+margin: 0;
+padding: 0;
+}
+
+/* 吹き出し中の文章アウトライン */
+.pinksays {
   position: relative;
-  display: inline-block;
-  margin: 1.5em 15px 1.5em 0;
-  padding: 0 5px;
-  width: 90px;
-  height: 90px;
-  line-height: 90px;
-  text-align: center;
-  color: #FFF;
-  font-size: 20px;
-  font-weight: bold;
-  background: #ff8e9d;
-  border-radius: 50%;
-  box-sizing: border-box;
+  max-width: calc(100% - 170px);
+  padding: .6rem 1.2rem;
+  border: solid 2px #fff;
+  border-radius: 1.2rem;
+  background-color: #fff;
+}
+@media (max-width:480px) {
+.pinksays {
+margin: 0;
+max-width: calc(100% - 125px);
+}
 }
 
-.balloon3-right:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: -25px;
-  margin-top: -15px;
-  border: 15px solid transparent;
-  border-left: 15px solid #ff8e9d;
-  z-index: 0;
+/* 吹き出し口 尖ってるところのあしらい */
+.pinksays::before {
+content: "";
+position: absolute;
+top: 50%;
+left: -16px;
+margin-top: -8px;
+border: 8px solid transparent;
+border-right: 10px solid #fff;
+z-index: 2;
+}
+.pinksays::after {
+content: "";
+position: absolute;
+top: 50%;
+left: -21px;
+margin-top: -9px;
+border: 9px solid transparent;
+border-right: 12px solid #fff;
+z-index: 1;
+}
+
+/* 右のアイコン配置指定 吹き出し反転など */
+.bln.fxd--rr .pinksays:before,
+.bln.fxd--rr .pinksays:after {
+transform: scale(-1, 1);
+
+}
+
+/* 右のアイコンから 吹き出し反転 */
+.bln.fxd--rr .pinksays:before {
+left: inherit;
+right: -16px;
+}
+.bln.fxd--rr .pinksays:after {
+left: inherit;
+right: -21px;
+}
+
+/*吹き出内の調整用*/
+.pinksays p {
+margin: 0;
+padding: 0;
+}
+
+/* 右の人にする時につける flex要素 */
+.fxd--rr {
+flex-direction: row-reverse;
 }

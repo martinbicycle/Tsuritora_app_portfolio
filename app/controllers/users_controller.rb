@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @tackles = Tackle.where(user_id: @user.id)
   end
 
   def update

@@ -2,7 +2,9 @@
 　<div class="row">
     <div class="col-2"></div>
 	　<div class="col-8">
-	    <h1 class="mt-5 text-center"><%= @post.user.profile_image %><%= @post.user.name %>さんの釣果</h1>
+	    <h1 class="mt-5 text-center">
+
+        <%= @post.user.name %>さんの釣果</h1>
 	    <table class="table">
 	    	<tr><th>写真</th></tr>
 	    	<tr><td><%= attachment_image_tag @post, :image, class: "fish-image" %></td></tr>
@@ -10,9 +12,15 @@
 	    	<tr><td><%= @post.name %></td></tr>
 	    	<tr><th>説明</th></tr>
 	    	<tr><td><%= @post.body %></td></tr>
-
-	    	<tr><td><%= @post.created_at %></td></tr>
 	    </table>
+	    <tr>
+	    	<td>ナイスフィッシュ数：</td>
+	    	<td>コメント数：</td>
+	    	<td><%= link_to "編集", edit_post_path(@post), class: "btn btn-success" %></td>
+	    	<td>
+					<%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
+	    	</td>
+	    </tr>
     </div>
     <div class="col-2"></div>
   </div>

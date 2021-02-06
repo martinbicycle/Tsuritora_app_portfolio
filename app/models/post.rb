@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+
+  attachment :image
+
   belongs_to :user
   has_many :tackles, :through => :post_tackles
   has_many :post_tags

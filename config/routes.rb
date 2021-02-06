@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'columns/index'
-  get 'columns/show'
-  get 'columns/new'
-  get 'columns/edit'
   root to: "homes#top"
   get "homes/about" => "homes#about"
   get '/search', to: 'search#search'

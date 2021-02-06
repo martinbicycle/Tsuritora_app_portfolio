@@ -1,10 +1,36 @@
 <h1>自分の釣果画面</h1>
 
-
-ユーザー名<%= @user.name %>
-
-自己紹介<%= @user.introduction %>
-
-メールアドレス<%= @user.email %>
-
-釣り歴<%= @user.fishing_history %>
+<div class="container">
+　<div class="row">
+	<div class="col-2"></div>
+	　<div class="col-8">
+	  <h1 class="mt-5 text-center">マイページ</h1>
+	  <table>
+	    <tr>
+	      <th>プロフィール画像</th>
+	  	  <td><%= attachment_image_tag @user, :profile_image, fallback: "no_image.png" , class: "image-circle"%></td>
+	    </tr>
+	    <tr>
+	      <th>ニックネーム</th>
+	  	  <td><%= @user.name %></td>
+	    </tr>
+	    <tr>
+	      <th>プロフィール</th>
+	  	  <td><%= @user.introduction %></td>
+	    </tr>
+	    <tr>
+	      <th>釣り歴</th>
+	  	  <td><%= @user.fishing_history %></td>
+	    </tr>
+	    <tr>
+	      <td></td>
+	      <td>
+	        <% if @user == current_user %>
+	          <%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %>
+	        <% end %>
+	      </td>
+	    </tr>
+	  </table>
+	<div class="col-2"></div>
+  </div>
+</div>

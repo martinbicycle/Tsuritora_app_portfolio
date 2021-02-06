@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  
+
   def index
     @posts = Post.all
   end
@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
   end
-  
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
@@ -21,10 +21,10 @@ class PostsController < ApplicationController
 
   def edit
   end
-  
+
   private
     def post_params
-      params.require(:post).permit(:name, :body, :image)
+      params.require(:post).permit(:name, :body, :image, :size, :fish_time, :address, :latitude, :longitude, :lure)
     end
-  
+
 end

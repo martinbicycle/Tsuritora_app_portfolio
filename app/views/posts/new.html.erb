@@ -1,0 +1,34 @@
+<div class="container">
+　<div class="row">
+    <div class="col-2"></div>
+	　<div class="col-8">
+	    <h1 class="mt-5 text-center">釣果を投稿する</h1>
+      <table class="table">
+      	<%= form_with model: @post, local: true do |f| %>
+          <tr><td><%= f.label :写真 %></td></tr>
+          <tr><td><%= f.attachment_field :image, class: "btn btn-danger", class: "form-control" %></td></tr>
+          <tr></tr><td><%= f.label :釣った日, class: 'control-label' %></td></tr>
+        	<tr><td><%= f.datetime_field :created_at, class: 'form-control' %></td></tr>
+          <tr><td><%= f.label :魚種 %></td></tr>
+          <tr></tr><td><%= f.text_field :name, autofocus: true, autocomplete: "魚種", :placeholder => "アジ、スズキ、サバ、メバル、ハゼ...etc", class: "form-control" %></td></tr>
+          <tr><td><%= f.label :サイズ %></td></tr>
+          <tr><td><%= f.text_field :size, class: "form-control" %></td></tr>
+          <tr><td><%= f.label :釣り具 %></td></tr>
+          <tr><td><%= f.text_field :name, class: "form-control" %></td></tr>
+        　<tr><td><%= f.label :ルアー %></td></tr>
+          <tr><td><%= f.text_field :lure, class: "form-control" %></td></tr>
+          <tr><td><%= f.label :コメントなど %></td></tr>
+          <tr><td><%= f.text_area :body, class: "form-control" %></td></tr>
+          <tr>
+          	<td>
+          	  <%= button_tag :type => "submit", :class =>"btn btn-info" do %>
+                <i class="fas fa-fish"></i>釣果を投稿する
+              <% end %>
+          	</td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>

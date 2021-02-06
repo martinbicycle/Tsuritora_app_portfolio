@@ -1,0 +1,18 @@
+<div class="container">
+	<div class="row">
+		<h2>ユーザー編集</h2>
+		<table>
+	    <%= form_with model: @user, local: true do |f| %>
+	    <tr><td><%= f.label :写真 %></td></tr>
+			<tr><th><%= f.attachment_field :profile_image %></th></tr>
+			<tr><th><%= f.label :ニックネーム %></th></tr>
+			<tr><td><%= f.text_field :name, class: "form-control" %></td></tr>
+			<tr><td><%= f.label :釣り歴 %></td></tr>
+			<tr><td><%= f.text_field :fishing_history, class: "form-control" %></td></tr>
+			<tr><td><%= f.label :自己紹介文 %></td></tr>
+			<tr><td><%= f.text_area :introduction, class: "form-control" %></td></tr>
+			<tr><td><%= f.submit :更新, class: "btn btn-success" %></td></tr>
+	    <% end %>
+		</table>
+	</div>
+</div>

@@ -4,21 +4,23 @@
 	　<div class="col-8">
 	    <h1 class="mt-5 text-center">釣果を投稿する</h1>
       <table class="table">
-      	<%= form_with model: @post, local: true do |f| %>
+      	<%= form_with(model: @post, local: true) do |f| %>
           <tr><td><%= f.label :写真 %></td></tr>
-          <tr><td><%= f.attachment_field :image, class: "btn btn-danger", class: "form-control" %></td></tr>
+          <tr><td><%= f.attachment_field :image %></td></tr>
           <tr></tr><td><%= f.label :釣った日, class: 'control-label' %></td></tr>
         	<tr><td><%= f.datetime_field :fish_time, class: 'form-control' %></td></tr>
           <tr><td><%= f.label :魚種 %></td></tr>
-          <tr></tr><td><%= f.text_field :name, autofocus: true, autocomplete: "魚種", :placeholder => "アジ、スズキ、サバ、メバル、ハゼ...etc", class: "form-control" %></td></tr>
+          <tr></tr><td><%= f.text_field :name, class: "form-control" %></td></tr>
           <tr><td><%= f.label :サイズ %></td></tr>
           <tr><td><%= f.text_field :size, class: "form-control" %></td></tr>
-          <tr><td><%= f.label :釣り具 %></td></tr>
-          <tr><td><%= f.text_field :name, class: "form-control" %></td></tr>
+          <tr><td><%= f.label :タックル %></td></tr>
+          <tr><td><%= f.collection_select :tackle, @tackles, :id, :name, {:prompt => "選択して下さい"}, {multiple: true} %></td></tr>
         　<tr><td><%= f.label :ルアー %></td></tr>
           <tr><td><%= f.text_field :lure, class: "form-control" %></td></tr>
           <tr><td><%= f.label :コメントなど %></td></tr>
           <tr><td><%= f.text_area :body, class: "form-control" %></td></tr>
+          <tr><td><%= f.label :address, '場所' %></td></tr>
+          <tr><td><%= f.text_field :address, placeholder: "釣った住所を入力してください", class: "form-control" %></td></tr>
           <tr>
           	<td>
           	  <%= button_tag :type => "submit", :class =>"btn btn-info" do %>

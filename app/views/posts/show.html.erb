@@ -3,25 +3,97 @@
     <div class="col-2"></div>
 	　<div class="col-8">
 	    <h1 class="mt-5 text-center">
-
-        <%= @post.user.name %>さんの釣果</h1>
-	    <table class="table">
+          <%= @post.user.name %>さんの釣果
+        </h1>
+        <%= attachment_image_tag(@post.user, :profile_image, class: "image-circle", fallback: "no_image.png") %>
+	      <table>
 	    	<tr><th>写真</th></tr>
 	    	<tr><td><%= attachment_image_tag @post, :image, class: "fish-image" %></td></tr>
+	    	<tr><th>コメントなど</th></tr>
+	    	<tr><td><%= @post.body %></td></tr>
 	    	<tr><th>釣った魚</th></tr>
 	    	<tr><td><%= @post.name %></td></tr>
-	    	<tr><th>説明</th></tr>
-	    	<tr><td><%= @post.body %></td></tr>
-	    </table>
-	    <tr>
+	      </table>
+	      <tr>
 	    	<td>ナイスフィッシュ数：</td>
 	    	<td>コメント数：</td>
-	    	<td><%= link_to "編集", edit_post_path(@post), class: "btn btn-success" %></td>
-	    	<td>
-					<%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
-	    	</td>
-	    </tr>
-    </div>
+	    	<% if @post.user_id == current_user.id%>
+		      <td><%= link_to "編集", edit_post_path(@post), class: "btn btn-success" %></td>
+		      <td>
+				<%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
+		      </td>
+	    	<% end %>
+	      </tr>
+
+	      <table>
+	    	<tr>
+	    		<h2>釣果データ</h2>
+	    	</tr>
+	    	<tr>
+	    		<td>釣れた日：</td>
+	    		<td><%= @post.fish_time %></td>
+	    	</tr>
+	    	<tr>
+	    		<td>魚種：</td>
+	    		<td><%= @post.name %></td>
+	    	</tr>
+	    	<tr>
+	    		<td>釣り道具：</td>
+	    		<td><%= @tackles %></td>
+	    	</tr>
+	    	<tr>
+	    		<td>サイズ:</td>
+	    		<td><%= @post.size %></td>
+	    	</tr>
+	    	<tr>
+	    		<td>ルアー：</td>
+	    		<td><%= @post.lure %></td>
+	    	</tr>
+	      </table>
+
+		  <script type="text/javascript">
+		    function initMap() {
+
+		    var test ={lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
+		    var map = new google.maps.Map(document.getElementById('map'), {
+		              zoom: 15,
+		              center: test
+		              });
+		    var transitLayer = new google.maps.TransitLayer();
+		    transitLayer.setMap(map);
+
+		    var contentString = '住所：<%= @post.address %>';
+		    var infowindow = new google.maps.InfoWindow({
+		      content: contentString
+		    });
+
+
+		    var marker = new google.maps.Marker({
+		                  position:test,
+		                  map: map,
+		                  title: contentString
+		                 });
+
+		     marker.addListener('click', function() {
+		       infowindow.open(map, marker);
+		     });
+		  }
+		  </script>
+
+	  	  <script async defer
+		    src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+		  </script>
+
+		  <style type="text/css">
+		    #map { height: 400px;
+		           width: 100%;}
+		  </style>
+
+
+　　　　  <div id="map"></div>
+
+    　</div>
     <div class="col-2"></div>
   </div>
 </div>
+

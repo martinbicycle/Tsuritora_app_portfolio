@@ -6,7 +6,7 @@
 	  <div class="wrapper">
 	    <div class="wrapper-left">
 	      <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png" , class: "image-circle"%>
-          釣り歴：<%= @user.fishing_history %>
+        釣り歴：<%= @user.fishing_history %>
 	      公開釣果数：<%= @user.posts.count %>
 	      フォロー数：
 	      フォロワー数：
@@ -46,15 +46,21 @@
         	  <tr>
         	    <td>
         		  <div class="col-6">
-        		    <%= link_to user_path(post) do %>
+        		    <%= link_to user_path(post.user_id) do %>
         		      <%= attachment_image_tag post.user, :profile_image, class: "profile-image", fallback: "no_image.png" %>
-        		    <% end %><span><%= post.name %></span>
+        		    <% end %><span>
         		  </div>
-        	    </td>
-        	  </tr>
-            </tbody>
-          </table>
-        <% end %>
+        	  </td>
+        	</tr>
+        	<tr>
+	          <td>魚種名：<%= post.name %></td>
+	        </tr>
+	        <tr>
+	        	<td>サイズ：<%= post.size %></td>
+	        </tr>
+        </tbody>
+      </table>
+    <% end %>
       </div>
       <div class="col-2"></div>
     </div>

@@ -13,18 +13,20 @@
 				<tr><td><%= f.text_area :introduction, class: "form-control" %></td></tr>
 				<tr><td><%= f.label :釣り道具一覧 %></td></tr>
 				<tr>
-					<td>
-					　<% @tackles.each do |tackle| %>
-				　　　<%= tackle.name %>
-				　　　<%= link_to "削除",user_tackle_path(@user,tackle), method: :delete, data: {confirm: "削除しますか？"} %>
-				　　<% end %>
-			　	</td>
-			　	<td>
-			　		<%= link_to new_user_tackle_path(@user) do %>
-			　		  タックル追加
-			　		<% end %>
-			　	</td>
-				</tr>
+				  <td>
+				    <% @tackles.each do |tackle| %>
+	                  <div>
+					    <%= tackle.name %>
+	       	　　　      <%= link_to "削除",user_tackle_path(@user,tackle), method: :delete, data: {confirm: "削除しますか？"} %>
+                      </div>
+			    　　<% end %>
+		　	  </td>
+		     　	  <td>
+		　		<%= link_to new_user_tackle_path(@user) do %>
+		　		  タックル追加
+		　		<% end %>
+		　	  </td>
+			 	</tr>
 
 				<tr><td><%= f.submit :更新, class: "btn btn-success" %></td></tr>
 	    <% end %>

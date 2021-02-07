@@ -1,0 +1,24 @@
+<div class="container">
+　<div class="row">
+    <div class="col-2"></div>
+	　<div class="col-8">
+	    <h1 class="mt-5 text-center">コラムに書いてほしい<br>内容を送ってください</h1>
+      <table>
+      	<%= form_with model: @contact do |f| %>
+          <tr><td><%= f.label :タイトル %></td></tr>
+          <tr><td><%= f.text_field :title, autofocus: true, autocomplete: "タイトル", :placeholder => "タイトル", class: "form-control" %></td></tr>
+          <tr><td><%= f.label :内容 %></td></tr>
+          <tr><td><%= f.text_area :body, autofocus: true, autocomplete: "本文", :placeholder => "(例)〇〇がわからないので教えてほしい...etc", class: "form-control" %></td></tr>
+          <tr>
+          	<td>
+          	  <%= button_tag :type => "submit", :class =>"btn btn-info" do %>
+                <i class="fas fa-fish"></i>　送信する
+              <% end %>
+          	</td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+　<div class="row">
+    <div class="col-2"></div>
+	　<div class="col-8">
+	    <h1 class="mt-5 text-center">お問い合わせ内容</h1>
+
+	    <table>
+	      <tr>
+	        <td>問い合わせユーザー名</td>
+	      </tr>
+	      <tr>
+	        <td><%= @contact.user.name %></td>
+	      </tr>
+	      <tr>
+	        <td>問い合わせタイトル</td>
+	      </tr>
+	      <tr>
+	        <td><%= @contact.title %></td>
+	      </tr>
+	      <tr>
+	        <td>問い合わせ内容</td>
+	      </tr>
+	      <tr>
+	        <td><%= @contact.body %></td>
+	      </tr>
+	    </table>
+
+	     <%= link_to contacts_path do %>
+	       お問い合わせ一覧へ戻る
+	     <% end %>
+
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>

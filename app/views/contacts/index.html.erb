@@ -1,0 +1,29 @@
+<div class="container">
+　<div class="row">
+    <div class="col-2"></div>
+	　<div class="col-8">
+	    <h1 class="mt-5 text-center">お問い合わせ一覧</h1>
+
+        お問い合わせ件数：<%= @contacts.count %>
+      <% @contacts.each do |contact| %>
+        <table class="table">
+          <tr>
+            <td>
+              お問い合わせタイトル：
+              <%= link_to contact_path(contact) do %>
+                <%= contact.title %>
+              <% end %>
+            <td>
+            <td>
+              お問い合わせユーザー：
+              <%= link_to user_path(contact.user_id) do %>
+                <%= contact.user.name %>
+              <% end %>
+            <td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>

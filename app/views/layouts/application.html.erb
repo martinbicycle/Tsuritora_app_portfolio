@@ -13,55 +13,53 @@
     <% if admin_signed_in? %>
       <header>
         <nav>
-          <div>
-            <h1>
-              <%= link_to 'つりトラ', root_path %>
-            </h1>
-            <ul class="navbar-nav">
-              <li><%= link_to '問い合わせ一覧', contacts_path %></li>
-              <li><%= link_to 'コラム', columns_path %></li>
-              <li><%= link_to 'コラムの投稿', new_contact_path %></li>
-              <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
-            </ul>
-          </div>
+          <ul class="header-item">
+            <li>
+              <%= link_to root_path do %>
+                <%= image_tag 'tsuritora_logo.png', size: '180x90' %>
+              <% end %>
+            </li>
+            <li class="list"><%= link_to '問い合わせ一覧', contacts_path %></li>
+            <li class="list"><%= link_to 'コラム', columns_path %></li>
+            <li class="list"><%= link_to 'コラムの投稿', new_column_path %></li>
+            <li class="list"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+          </ul>
         </nav>
       </header>
     <% elsif user_signed_in? %>
       <header>
         <nav>
-          <div>
-            <h1>
+          <ul class="header-item">
+            <li>
               <%= link_to root_path do %>
                 <%= image_tag 'tsuritora_logo.png', size: '180x90' %>
               <% end %>
-            </h1>
-            <ul class="navbar-nav">
-              <li><%= link_to '自分の釣果', user_path(current_user) %></li>
-              <li><%= link_to 'みんなの釣果', posts_path %></li>
-              <li><%= link_to '釣果を投稿する', new_post_path %></li>
-              <li><%= link_to 'コラム', columns_path %></li>
-              <li><%= link_to 'つりトラの使い方', homes_about_path %></li>
-              <li><%= link_to 'お問い合わせ', new_contact_path %></li>
-              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-            </ul>
-          </div>
+            </li>
+            <li class="list"><%= link_to '自分の釣果', user_path(current_user) %></li>
+            <li class="list"><%= link_to 'みんなの釣果', posts_path %></li>
+            <li class="list"><%= link_to '釣果を投稿する', new_post_path %></li>
+            <li class="list"><%= link_to 'コラム', columns_path %></li>
+            <li class="list"><%= link_to 'つりトラの使い方', homes_about_path %></li>
+            <li class="list"><%= link_to 'お問い合わせ', new_contact_path %></li>
+            <li class="list"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+          </ul>
         </nav>
       </header>
     <% else %>
       <header>
         <nav>
-          <div>
-                        <h1>
-              <%= link_to 'つりトラ', root_path %>
-            </h1>
-            <ul class="navbar-nav">
-              <li><%= link_to 'みんなの釣果', posts_path %></li>
-              <li><%= link_to 'つりトラの使い方', homes_about_path %></li>
-              <li><%= link_to 'コラム', columns_path %></li>
-              <li><%= link_to '新規登録', new_user_registration_path %></li>
-              <li><%= link_to 'ログイン', new_user_session_path %></li>
-            </ul>
-          </div>
+          <ul class="header-item">
+            <li>
+              <%= link_to root_path do %>
+                <%= image_tag 'tsuritora_logo.png', size: '180x90' %>
+              <% end %>
+            </li>
+            <li class="list"><%= link_to 'みんなの釣果', posts_path %></li>
+            <li class="list"><%= link_to 'つりトラの使い方', homes_about_path %></li>
+            <li class="list"><%= link_to 'コラム', columns_path %></li>
+            <li class="list"><%= link_to '新規登録', new_user_registration_path %></li>
+            <li class="list"><%= link_to 'ログイン', new_user_session_path %></li>
+          </ul>
         </nav>
       </header>
     <% end %>

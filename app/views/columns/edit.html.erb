@@ -1,2 +1,26 @@
-<h1>Columns#edit</h1>
-<p>Find me in app/views/columns/edit.html.erb</p>
+<div class="container">
+　<div class="row">
+    <div class="col-2"></div>
+	　<div class="col-8">
+	    <h1 class="mt-5 text-center">コラムの編集</h1>
+      <table class="table">
+      	<%= form_with(model: @column, local: true) do |f| %>
+          <tr><td><%= f.label :タイトル %></td></tr>
+          <tr><td><%= f.text_field :title, class: 'form-control' %></td></tr>
+          <tr></tr><td><%= f.label :画像, class: 'control-label' %></td></tr>
+        	<tr><td><%= f.attachment_field :image, class: 'form-control' %></td></tr>
+          <tr><td><%= f.label :本文 %></td></tr>
+          <tr></tr><td><%= f.text_area :body, class: "form-control" %></td></tr>
+          <tr>
+          	<td>
+          	  <%= button_tag :type => "submit", :class =>"btn btn-info" do %>
+                <i class="fas fa-fish"></i>コラムを更新する
+              <% end %>
+          	</td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>

@@ -22,7 +22,7 @@ resources :users, only: [:show, :edit, :update] do
 end
 
 resources :posts do
-  resources :favorites, only: [:create, :destroy]
+  resource :favorites, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
 end
 

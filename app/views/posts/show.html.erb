@@ -15,8 +15,8 @@
 	    	<tr><td><%= @post.name %></td></tr>
 	      </table>
 	      <tr>
-	    	<td>ナイスフィッシュ数：</td>
-	    	<td>コメント数：</td>
+	    	<td>ナイスフィッシュ数：<%= @post.favorites.count %></td>
+	    	<td>コメント数：<%= @post.comments.count %></td>
 	    	<% if @post.user_id == current_user.id%>
 		      <td><%= link_to "編集", edit_post_path(@post), class: "btn btn-success" %></td>
 		      <td>
@@ -31,7 +31,7 @@
 	    	</tr>
 	    	<tr>
 	    		<td>釣れた日：</td>
-	    		<td><%= @post.fish_time %></td>
+	    		<td><%= @post.fish_time.strftime("%Y-%m-%d %H:%M") %></td>
 	    	</tr>
 	    	<tr>
 	    		<td>魚種：</td>
@@ -91,6 +91,43 @@
 
 
 　　　　  <div id="map"></div>
+
+					<div class="comments">
+					<% @post.comments.each do |comment| %>
+					  <%= comment.user.name %>
+					  <%= comment.created_at.strftime('%Y/%m/%d') %>
+					  <%= comment.body %>
+					  <% if comment.user == current_user %>
+              <div class="comment-delete">
+                <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+              </div>
+            <% end %>
+					<% end %>
+					</div>
+					<div class="new-comment">
+					<%= form_with(model:[@post, @comment], local: true) do |f| %>
+					  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+					  <%= f.submit "送信する" %>
+					<% end %>
+					</div>
+
+					<% if @post.favorited_by?(current_user) %>
+			    <p>
+			      <%= link_to post_favorites_path(@post), method: :delete do %>
+			        ♥<%= @post.favorites.count %> いいね
+			      <% end %>
+			    </p>
+			    <% else %>
+			    <p>
+			      <%= link_to post_favorites_path(@post), method: :post do %>
+			        ♡<%= @post.favorites.count %> いいね
+			      <% end %>
+			    </p>
+			  <% end %>
+
+			  <%= link_to user_path(@post.user_id) do %>
+			  　<%= @post.user.name %>さんの釣果をもっと見る
+			  <% end %>
 
     　</div>
     <div class="col-2"></div>

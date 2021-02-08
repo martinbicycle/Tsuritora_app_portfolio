@@ -5,8 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   attachment :profile_image
-
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :tackles, dependent: :destroy
   has_many :contacts
   has_many :comments, dependent: :destroy
@@ -15,5 +14,17 @@ class User < ApplicationRecord
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :follower
   has_many :followings, through: :relationships, source: :following
+  
+  def follow(user_id)
+    relationships.create(following_id: user_id)
+  end
+
+  def unfollow(user_id)
+    relationships.find_by(following_id: user_id).destroy
+  end
+
+  def following?(user)
+    followings.include?(user)
+  end
 
 end

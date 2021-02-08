@@ -8,6 +8,7 @@ class PostsController < ApplicationController
     tackleids = PostTackle.where(post_id: params[:id] ).pluck(:tackle_id)
     @tackles = Tackle.where(id: tackleids).pluck(:name).join(',')
     @post = Post.find(params[:id])
+    @comment = Comment.new
   end
 
   def new

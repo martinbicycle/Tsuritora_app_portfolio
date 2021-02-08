@@ -4,7 +4,6 @@
     <title>Tsuritora</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -19,7 +18,7 @@
                 <%= image_tag 'tsuritora_logo.png', size: '180x90' %>
               <% end %>
             </li>
-            <li class="list"><%= link_to '問い合わせ一覧', contacts_path %></li>
+            <li class="list"><%= link_to '質問一覧', contacts_path %></li>
             <li class="list"><%= link_to 'コラム', columns_path %></li>
             <li class="list"><%= link_to 'コラムの投稿', new_column_path %></li>
             <li class="list"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
@@ -35,12 +34,12 @@
                 <%= image_tag 'tsuritora_logo.png', size: '180x90' %>
               <% end %>
             </li>
-            <li class="list"><%= link_to '自分の釣果', user_path(current_user) %></li>
-            <li class="list"><%= link_to 'みんなの釣果', posts_path %></li>
-            <li class="list"><%= link_to '釣果を投稿する', new_post_path %></li>
+            <li class="list"><%= link_to 'マイページ', user_path(current_user) %></li>
+            <li class="list"><%= link_to '投稿する', new_post_path %></li>
+            <li class="list"><%= link_to 'みんなの投稿', posts_path %></li>
             <li class="list"><%= link_to 'コラム', columns_path %></li>
             <li class="list"><%= link_to 'つりトラの使い方', homes_about_path %></li>
-            <li class="list"><%= link_to 'お問い合わせ', new_contact_path %></li>
+            <li class="list"><%= link_to '質問箱', new_contact_path %></li>
             <li class="list"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
           </ul>
         </nav>
@@ -54,7 +53,7 @@
                 <%= image_tag 'tsuritora_logo.png', size: '180x90' %>
               <% end %>
             </li>
-            <li class="list"><%= link_to 'みんなの釣果', posts_path %></li>
+            <li class="list"><%= link_to 'みんなの投稿', posts_path %></li>
             <li class="list"><%= link_to 'つりトラの使い方', homes_about_path %></li>
             <li class="list"><%= link_to 'コラム', columns_path %></li>
             <li class="list"><%= link_to '新規登録', new_user_registration_path %></li>
@@ -63,11 +62,6 @@
         </nav>
       </header>
     <% end %>
-
-
-
-
-
     <%= yield %>
     <div class="wrapper">
       <footer>

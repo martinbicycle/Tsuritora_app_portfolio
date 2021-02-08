@@ -2,11 +2,11 @@
 　<div class="row">
     <div class="col-2"></div>
 	　<div class="col-8">
-	    <h1 class="mt-5 text-center">タックル追加</h1>
+	    <h1 class="mt-5 text-center">釣り具追加</h1>
+	    <%= form_with model: [@user, @tackle] do |f| %>
       <table>
-      	<%= form_with model: [@user, @tackle] do |f| %>
-          <tr><td><%= f.label :釣り道具 %></td></tr>
-          <tr><td><%= f.text_field :name, autofocus: true, autocomplete: "釣り道具", :placeholder => "ロッド名、リール名...etc", class: "form-control" %></td></tr>
+          <tr><td><%= f.label :釣り具 %></td></tr>
+          <tr><td><%= f.text_field :name, autofocus: true, autocomplete: "釣り具", :placeholder => "ロッド名、リール名...etc", class: "form-control" %></td></tr>
           <tr>
           	<td>
           	  <%= button_tag :type => "submit", :class =>"btn btn-warning" do %>

@@ -1,6 +1,11 @@
 
 <div class="container">
-	<h2>みんなの釣果</h2>
+  <%= form_with url: posts_path, method: :get, class: '自由に' do %>
+    <%= select_tag :tag_id,
+    options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+    {prompt: 'タグで絞り込み', class: '自由に', onchange: 'submit(this.form);'} %>
+  <% end %>
+	<h2>みんなの投稿</h2>
   <div class="row">
     <% @posts.each do |post| %>
       <table>

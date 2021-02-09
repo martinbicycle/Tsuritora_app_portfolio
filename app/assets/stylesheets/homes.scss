@@ -2,6 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+#container{
+  height: 500px;
+}
+
+
+.image1 {
+  background-image: url(image1.jpg);
+}
+.image2 {
+  background-image: url(image2.jpg);
+}
+.image3 {
+  background-image: url(image3.jpg);
+}
+.image4 {
+  background-image: url(image4.jpg);
+}
+.image5 {
+  background-image: url(image5.jpg);
+}
+
+
+
 .background-image {
   background-image: url("sea.jpg");
   background-size: cover;
@@ -52,7 +76,7 @@ background-image: url("torachan_happy.png") /*画像ファイル場所を記入*
 }
 
 /* 吹き出し中の文章アウトライン */
-.purplesays {
+.okiamisays {
   position: relative;
   max-width: calc(100% - 170px);
   padding: .6rem 1.2rem;
@@ -61,14 +85,14 @@ background-image: url("torachan_happy.png") /*画像ファイル場所を記入*
   background-color: #fff;
 }
 @media (max-width:480px) {
-.purplesays {
+.okiamisays {
 margin: 0;
 max-width: calc(100% - 125px);
 }
 }
 
 /* 吹き出し口 尖ってるところのあしらい */
-.purplesays::before {
+.okiamisays::before {
 content: "";
 position: absolute;
 top: 50%;
@@ -78,7 +102,7 @@ border: 8px solid transparent;
 border-right: 10px solid #fff;
 z-index: 2;
 }
-.purplesays::after {
+.okiamisays::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -90,30 +114,30 @@ z-index: 2;
 }
 
 /* 左のアイコン配置指定 吹き出し反転など */
-.bln.fxd--rr .purplesays:before,
-.bln.fxd--rr .purplesays:after {
+.bln.fxd--rr .okiamisays:before,
+.bln.fxd--rr .okiamisays:after {
 transform: scale(-1, 1);
 
 }
 
 /* 左のアイコンから 吹き出し反転 */
-.bln.fxd--rr .purplesays:before {
+.bln.fxd--rr .okiamisays:before {
 left: inherit;
 right: -16px;
 }
-.bln.fxd--rr .purplesays:after {
+.bln.fxd--rr .okiamisays:after {
 left: inherit;
 right: -21px;
 }
 
 /*吹き出内の調整用*/
-.purplesays p {
+.okiamisays p {
 margin: 0;
 padding: 0;
 }
 
 /* 吹き出し中の文章アウトライン */
-.pinksays {
+.torachansays {
   position: relative;
   max-width: calc(100% - 170px);
   padding: .6rem 1.2rem;
@@ -122,14 +146,14 @@ padding: 0;
   background-color: #fff;
 }
 @media (max-width:480px) {
-.pinksays {
+.torachansays {
 margin: 0;
 max-width: calc(100% - 125px);
 }
 }
 
 /* 吹き出し口 尖ってるところのあしらい */
-.pinksays::before {
+.torachansays::before {
 content: "";
 position: absolute;
 top: 50%;
@@ -139,7 +163,7 @@ border: 8px solid transparent;
 border-right: 10px solid #fff;
 z-index: 2;
 }
-.pinksays::after {
+.torachansays::after {
 content: "";
 position: absolute;
 top: 50%;
@@ -151,24 +175,24 @@ z-index: 1;
 }
 
 /* 右のアイコン配置指定 吹き出し反転など */
-.bln.fxd--rr .pinksays:before,
-.bln.fxd--rr .pinksays:after {
+.bln.fxd--rr .torachansays:before,
+.bln.fxd--rr .torachansays:after {
 transform: scale(-1, 1);
 
 }
 
 /* 右のアイコンから 吹き出し反転 */
-.bln.fxd--rr .pinksays:before {
+.bln.fxd--rr .torachansays:before {
 left: inherit;
 right: -16px;
 }
-.bln.fxd--rr .pinksays:after {
+.bln.fxd--rr .torachansays:after {
 left: inherit;
 right: -21px;
 }
 
 /*吹き出内の調整用*/
-.pinksays p {
+.torachansays p {
 margin: 0;
 padding: 0;
 }

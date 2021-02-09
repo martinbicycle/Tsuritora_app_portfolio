@@ -12,7 +12,7 @@
         <tr><td><%= f.label :サイズ %></td></tr>
         <tr><td><%= f.text_field :size, class: "form-control" %></td></tr>
         <tr><td><%= f.label :タックル %></td></tr>
-        <tr><td><%= f.collection_select :tackle, @tackles, :id, :name, {:prompt => "選択して下さい"}, {multiple: true} %></td></tr>
+        <tr><td><%= f.collection_select :tackle, @tackles, :id, :name, {:prompt => "選択して下さい"}, {multiple: true, class: "btn btn-light"} %></td></tr>
       　<tr><td><%= f.label :ルアー %></td></tr>
         <tr><td><%= f.text_field :lure, class: "form-control" %></td></tr>
         <tr><td><%= f.label :コメントなど %></td></tr>

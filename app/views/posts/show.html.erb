@@ -91,36 +91,15 @@
 		</style>
 　　　　<div id="map"></div>
 		<div class="new-comment">
-		<%= form_with(model:[@post, @comment], local: true) do |f| %>
-		  <%= f.text_area :body, rows:'5',placeholder: "コメントをここに", class: "form-control" %>
+		<%= form_with(model:[@post, @comment], remote: true) do |f| %>
+		  <%= f.text_area :body, rows:'5',placeholder: "コメントをここに", class: "form-control commentbtn" %>
 		  <%= f.submit "送信する" %>
 		<% end %>
 		</div>
-		<div class="comments">
-		  <% @post.comments.each do |comment| %>
-			<%= comment.user.name %>
-			<%= comment.created_at.strftime('%Y/%m/%d') %>
-			<%= comment.body %>
-			<% if comment.user == current_user %>
-              <div class="comment-delete">
-                <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
-              </div>
-            <% end %>
-		  <% end %>
-		</div>
-      <% if @post.favorited_by?(current_user) %>
-	    <p>
-	      <%= link_to post_favorites_path(@post), method: :delete do %>
-	        ♥<%= @post.favorites.count %> いいね
-	      <% end %>
-	    </p>
-	    <% else %>
-	    <p>
-	      <%= link_to post_favorites_path(@post), method: :post do %>
-	        ♡<%= @post.favorites.count %> いいね
-	      <% end %>
-	    </p>
-	  <% end %>
+       <div class="comment-btn"><%= render "comments/comment", post: @post %></div>
+
+       <div class="favorite-btn" id="favorite-<%= @post.id %>" ><%= render "favorites/favorite-btn", post: @post %></div>
+
 	  <%= link_to user_path(@post.user_id) do %>
 	  　<%= @post.user.name %>さんの釣果をもっと見る
 	  <% end %>

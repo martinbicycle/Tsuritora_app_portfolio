@@ -1,0 +1,8 @@
+<% if @model == 'post' %>
+	<h3>投稿の検索結果 "<%= @content %>"</h3>
+  <%= render 'posts/index', posts: @records %>
+<% elsif @model == 'column' %>
+	<h3>コラムの検索結果 "<%= @content %>"</h3>
+  <%= render 'columns/index', columns: @records %>
+<% end %>
+

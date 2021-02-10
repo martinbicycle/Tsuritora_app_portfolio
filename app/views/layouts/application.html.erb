@@ -125,16 +125,33 @@
     <% end %>
     <%= render 'layouts/search' %>
     <%= yield %>
+    <span id="back">
+      <%= link_to "#" do %>
+        <%= image_tag 'okiami.png', size: '50X50' %>
+      <% end %>
+    </span>
+    <script>
+    $(function() {
+      $('#back a').on('click',function(event){
+        $('body, html').animate({
+          scrollTop:0
+        }, 800);
+        event.preventDefault();
+      });
+    });
+    </script>
+
     <div class="wrapper">
       <footer>
         <p>©Copyright Tsuritora. ALL Rights researved.</p>
       </footer>
     </div>
       <script>
-        $('#hamburger').on('click', function(){
+      $('#hamburger').on('click', function(){
         $('.icon').toggleClass('close');
-        $('.small').slideToggle();
-        });
+          $('.small').slideToggle(
+            );
+      });
       </script>
   </body>
 </html>

@@ -30,3 +30,34 @@
 .fish-name {
 	width :100px;
 }
+
+#files{
+	display: none;
+}
+
+
+.circle_color{
+	color: #ccc;
+}
+
+#btn {
+	  height :80px;
+	  width :111px;
+	  margin-right: 50px;
+    color: #000000;
+    cursor: pointer;
+    padding: 15px 30px;
+    display: inline-block;
+    border: inset;
+}
+input {
+	  margin-left: 30px;
+    background: none;
+    box-shadow: none;
+    border: none;
+}
+
+.search_form {
+	border: inset;
+	
+}

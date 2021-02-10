@@ -1,39 +1,51 @@
 <div class="container">
 　<div class="row">
-    <h1 class="mt-5 text-center">投稿する</h1>
-    <%= form_with(model: @post, local: true) do |f| %>
-      <table class="table">
-        <tr><td><%= f.label :写真 %></td></tr>
-        <tr><td><%= f.attachment_field :image %></td></tr>
-        <tr></tr><td><%= f.label :釣った日, class: 'control-label' %></td></tr>
-      	<tr><td><%= f.datetime_field :fish_time, class: 'form-control' %></td></tr>
-        <tr><td><%= f.label :魚種 %></td></tr>
-        <tr></tr><td><%= f.text_field :name, class: "form-control" %></td></tr>
-        <tr><td><%= f.label :サイズ %></td></tr>
-        <tr><td><%= f.text_field :size, class: "form-control" %></td></tr>
-        <tr><td><%= f.label :タックル %></td></tr>
-        <tr><td><%= f.collection_select :tackle, @tackles, :id, :name, {:prompt => "選択して下さい"}, {multiple: true, class: "btn btn-light"} %></td></tr>
-      　<tr><td><%= f.label :ルアー %></td></tr>
-        <tr><td><%= f.text_field :lure, class: "form-control" %></td></tr>
-        <tr><td><%= f.label :コメントなど %></td></tr>
-        <tr><td><%= f.text_area :body, class: "form-control" %></td></tr>
-        <tr><td><%= f.label :タグをつける %></td></tr>
-        <tr>
-          <td>
-            <%= f.text_field :tag_ids, class: "form-control", id:'tag_ids',\
-            placeholder: "複数つけるには','で区切ってください。" %>
-          </td>
-        </tr>
-        <tr><td><%= f.label :address, '場所' %></td></tr>
-        <tr><td><%= f.text_field :address, placeholder: "住所を入力してください", class: "form-control" %></td></tr>
-        <tr>
+    <div class="col-1"></div>
+	　<div class="col-9">
+      <h1 class="mt-5 text-center">投稿する</h1>
+      <%= form_with(model: @post, local: true) do |f| %>
+        <table class="table">
+          <tr>
+            <td><%= f.label :写真 %></td>
+          </tr>
+          <tr>
+            <td>
+              <div id="btn"><i class="fas fa-plus-circle fa-3x circle_color"></i></div>
+                <%= f.attachment_field :image, id: "files" %>
+              <input type="text" id="filename" placeholder="選択されていません" readonly />
+            </td>
+          </tr>
+          <tr><td><%= f.label :釣った日, class: 'control-label' %></td></tr>
+        	<tr><td><%= f.datetime_field :fish_time, class: 'form-control' %></td></tr>
+          <tr><td><%= f.label :魚種 %></td></tr>
+          <tr><td><%= f.text_field :name, class: "form-control" %></td></tr>
+          <tr><td><%= f.label :サイズ %></td></tr>
+          <tr><td><%= f.text_field :size, class: "form-control" %></td></tr>
+          <tr><td><%= f.label :タックル %></td></tr>
+          <tr><td><%= f.collection_select :tackle, @tackles, :id, :name, {:prompt => "選択して下さい"}, {multiple: true, class: "btn btn-light"} %></td></tr>
+        　<tr><td><%= f.label :ルアー %></td></tr>
+          <tr><td><%= f.text_field :lure, class: "form-control" %></td></tr>
+          <tr><td><%= f.label :コメントなど %></td></tr>
+          <tr><td><%= f.text_area :body, class: "form-control" %></td></tr>
+          <tr><td><%= f.label :タグをつける %></td></tr>
+          <tr>
+            <td>
+              <%= f.text_field :tag_ids, class: "form-control", id:'tag_ids',\
+              placeholder: "複数つけるには','で区切ってください。" %>
+            </td>
+          </tr>
+          <tr><td><%= f.label :address, '場所' %></td></tr>
+          <tr><td><%= f.text_field :address, placeholder: "住所を入力してください", class: "form-control" %></td></tr>
+          <tr>
         	<td class="text-center">
-        	  <%= button_tag :type => "submit", :class =>"btn btn-info btn-lg btn-block" do %>
-              <i class="fas fa-fish"></i>釣果を投稿する
-            <% end %>
-        	</td>
-        </tr>
-      </table>
-    <% end %>
+          	  <%= button_tag :type => "submit", :class =>"btn btn-info btn-lg btn-block" do %>
+                <i class="fas fa-fish"></i>釣果を投稿する
+              <% end %>
+          	</td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+    <div class="col-1"></div>
   </div>
 </div>

@@ -2,13 +2,19 @@
 　<div class="row">
     <div class="col-2"></div>
 	　<div class="col-8">
-	    <h1 class="mt-5 text-center">コラムの投稿</h1>
+	    <h1 class="text-center">コラムの投稿</h1>
       <table class="table">
       	<%= form_with(model: @column, local: true) do |f| %>
           <tr><td><%= f.label :タイトル %></td></tr>
           <tr><td><%= f.text_field :title, class: 'form-control' %></td></tr>
           <tr></tr><td><%= f.label :画像, class: 'control-label' %></td></tr>
-        	<tr><td><%= f.attachment_field :image, class: 'form-control' %></td></tr>
+        	<tr>
+        	  <td>
+              <div id="btn"><i class="fas fa-plus-circle fa-3x circle_color"></i></div>
+                <%= f.attachment_field :image, id: "files" %>
+              <input type="text" id="filename" placeholder="選択されていません" readonly />
+        	  </td>
+        	 </tr>
           <tr><td><%= f.label :本文 %></td></tr>
           <tr></tr><td><%= f.text_area :body, class: "form-control" %></td></tr>
           <tr>

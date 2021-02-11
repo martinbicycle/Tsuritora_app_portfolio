@@ -10,9 +10,7 @@
         <tr><td><%= attachment_image_tag @column, :image, class: "image" %></td></tr>
         <tr><td><%= simple_format @column.body %></td></tr>
       </table>
-
-        <%= link_to "他のコラムを見る", columns_path %>
-
+        <%= link_to "他のコラムを見る", columns_path, class: "btn btn-info mb-4 ml-4" %>
       	<% if admin_signed_in?%>
 		      <td><%= link_to "編集", edit_column_path(@column), class: "btn btn-success" %></td>
 		      <td><%= link_to "削除", column_path(@column), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %></td>

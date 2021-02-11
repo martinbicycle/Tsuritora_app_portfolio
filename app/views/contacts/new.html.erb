@@ -2,17 +2,17 @@
 　<div class="row">
     <h1 class="text-center">コラムに書いてほしい内容を送ってください</h1>
     <table class="table">
-    	<%= form_with model: @contact do |f| %>
+      <%= form_with model: @contact do |f| %>
         <tr><td><%= f.label :タイトル %></td></tr>
         <tr><td><%= f.text_field :title, autofocus: true, autocomplete: "タイトル", :placeholder => "タイトル", class: "form-control" %></td></tr>
         <tr><td><%= f.label :内容 %></td></tr>
         <tr><td><%= f.text_area :body, autofocus: true, autocomplete: "本文", :placeholder => "(例)〇〇がわからないので教えてほしい...etc", class: "form-control" %></td></tr>
         <tr>
-        	<td>
-        	  <%= button_tag :type => "submit", :class =>"btn btn-info btn-lg btn-block" do %>
+          <td>
+        	<%= button_tag :type => "submit", :class =>"btn btn-info btn-lg btn-block" do %>
               <i class="fas fa-fish"></i>　送信する
             <% end %>
-        	</td>
+          </td>
         </tr>
       <% end %>
     </table>

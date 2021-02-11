@@ -3,6 +3,7 @@
     <tr>
       <th></th>
       <th>タイトル</th>
+      <th>写真</th>
       <th>場所</th>
       <th colspan="3"></th>
     </tr>
@@ -14,8 +15,16 @@
           <%= attachment_image_tag(post.user, :profile_image, :fill, 50, 50, fallback: "no_image.png") %>
           <% end %>
         </td>
-        <td><%= link_to post.name, post_path(post), class: "post_#{post.id}" %></td>
+        <td><%= post.name %></td>
+        <td class="image_fish">
+          <div class="fish_size">
+            <%= link_to post_path(post) do %>
+              <%= attachment_image_tag post, :image, class: "image-size" %>
+            <% end %>
+          </div>
+        </td>
         <td><%= post.address %></td>
+        <td><%= link_to "この投稿を見る", post_path(post), class: "btn btn-info" %></td>
       </tr>
     <% end %>
   </tbody>

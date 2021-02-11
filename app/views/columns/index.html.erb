@@ -3,13 +3,13 @@
     <h1 class="mt-3 text-center">コラム一覧</h1>
      <% @columns.each do |column| %>
       <table class="table">
-        <tr><td>投稿日：<%= column.created_at.strftime("%Y-%m-%d") %></td></tr>
         <tr>
-          <td>タイトル：
-      	    <%= link_to column_path(column) do %>
-      	      <%= column.title %>
-      	    <% end %>
-          </td>
+          <td>投稿日：<%= column.created_at.strftime("%Y-%m-%d") %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>タイトル：<%= column.title %></td>
+          <td><%= link_to "このコラムを見る", column_path(column), class: "btn btn-info" %></td>
         </tr>
       </table>
     <% end %>

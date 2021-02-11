@@ -1,12 +1,20 @@
-<div class="comments">
-  <% @post.comments.each do |comment| %>
-	  <%= comment.user.name %>
-	  <%= comment.created_at.strftime('%Y/%m/%d') %>
-	  <%= comment.body %>
-		<% if comment.user == current_user %>
-      <div class="comment-delete">
-        <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+<% @post.comments.each do |comment| %>
+  <table>
+    <tr>
+      <td>
+        <%= link_to user_path(comment.user_id) do %>
+          <%= attachment_image_tag comment.user, :profile_image, class: "profile-image", fallback: "no_image.png" %>
+        <% end %>
+      </td>
+      <td><h3><%= comment.body %></h3></td>
+      <td><%= comment.created_at.strftime('%m/%d') %></td>
+      <td>
+        <% if comment.user == current_user %>
+          <div class="comment-delete">
+            <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-danger" %>
+          </div>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+<% end %>

@@ -1,12 +1,19 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+#map { height: 400px;
+        width: 100%;
+}
 .image-circle {
 	height :200px;
 	width :200px;
 	border-radius :50%;
 
+}
+
+.image_fish{
+	height: 200px;
+	width: 300px;
 }
 
 
@@ -16,8 +23,8 @@
 
 
 .image-size {
-	height: 130px;
-	width: 180px;
+	height: 170px;
+	width: 100%;
 }
 
 
@@ -59,5 +66,25 @@ input {
 
 .search_form {
 	border: inset;
-	
+
+}
+
+
+.position {
+	margin-left: 30px;
+}
+
+@media (max-width: 1056px) {
+
+	.image-size {
+		height: auto;
+		width: 100%;
+	}
+}
+
+
+.profile-image {
+	height:60px;
+	width:60px;
+	border-radius: 50%;
 }

@@ -1,35 +1,41 @@
 <div class="container">
 	<div class="row">
+		<div class="col-1"></div>
+		<div class="col-10">
+	    <h1 class="text-center">ユーザー編集</h1>
 		<h2>ユーザー編集</h2>
 		<%= form_with model: @user, local: true do |f| %>
-	  	  <table>
+	    <table>
 		    <tr><td><%= f.label :写真 %></td></tr>
-			<tr><th><%= f.attachment_field :profile_image %></th></tr>
-			<tr><th><%= f.label :ニックネーム %></th></tr>
-			<tr><td><%= f.text_field :name, class: "form-control" %></td></tr>
-			<tr><td><%= f.label :釣り歴 %></td></tr>
-			<tr><td><%= f.text_field :fishing_history, class: "form-control" %></td></tr>
-			<tr><td><%= f.label :自己紹介文 %></td></tr>
-			<tr><td><%= f.text_area :introduction, class: "form-control" %></td></tr>
-			<tr><td><%= f.label :釣り道具一覧 %></td></tr>
-			<tr>
-			  <td>
-			    <% @tackles.each do |tackle| %>
-	              <div>
-				    <%= tackle.name %>
-	       	　　　  <%= link_to "削除",user_tackle_path(@user,tackle), method: :delete, data: {confirm: "削除しますか？"} %>
-                  </div>
-			    <% end %>
-	  	　    </td>
+			  <tr>
+			  	<td>
+              <div id="btn"><i class="fas fa-plus-circle fa-3x circle_color"></i></div>
+                <%= f.attachment_field :profile_image, id: "files" %>
+              <input type="text" id="filename" placeholder="選択されていません" readonly />
+			  	</td>
+			  </tr>
+			  <tr><th><%= f.label :ニックネーム %></th></tr>
+			  <tr><td><%= f.text_field :name, class: "form-control" %></td></tr>
+			  <tr><td><%= f.label :釣り歴 %></td></tr>
+		  	<tr><td><%= f.text_field :fishing_history, class: "form-control" %></td></tr>
+			  <tr><td><%= f.label :自己紹介文 %></td></tr>
+			  <tr><td><%= f.text_area :introduction, class: "form-control" %></td></tr>
+			  <tr><td><%= f.label :釣り道具一覧 %></td></tr>
+			  <tr>
+			    <td>
+			      <% @tackles.each do |tackle| %>
+	            <div>
+				        <%= tackle.name %>
+	       	　    <%= link_to "削除",user_tackle_path(@user,tackle), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
+              </div>
+			      <% end %>
+	  	　  </td>
 		      <td>
-                <%= link_to new_user_tackle_path(@user) do  %>
-		　	  タックル追加
-		　	<% end %>
-			  </td>
+            <%= link_to "タックル追加", new_user_tackle_path(@user), class: "btn btn-warning" %>
+			    </td>
 	  	 	</tr>
-
 				<tr><td><%= f.submit :更新, class: "btn btn-success btn-block" %></td></tr>
-	    <% end %>
-		</table>
+		  </table>
+		<% end %>
 	</div>
 </div>

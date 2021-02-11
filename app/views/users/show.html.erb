@@ -1,78 +1,73 @@
 <div class="container">
   <h1>マイページ</h1>
-  <div class="wrapper">
-	<div class="wrapper-left">
-	  <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png" , class: "image-circle"%>
-	  <div>
-	  	<table>
-	  	  <tr>
-	  	  	<th>釣り歴：<%= @user.fishing_history %></th>
-	  	  </tr>
-		  <tr>
-		    <th>フォロー数:<%= link_to @user.followings.count, user_followings_path(@user) %></th>
-	  	  </tr>
-		  <tr>
-	        <th>フォロワー数:<%= link_to @user.followers.count, user_followers_path(@user) %></th>
-	      </tr>
-	  	</table>
-	  </div>
-	</div>
-	<div class="wrapper-center">
-		<h1><%= @user.name %></h1>
-		<h4><%= @user.introduction %></h4>
-	</div>
-	<div class="wrapper-right">
-	  <% if current_user != @user %>
-		<% if current_user.following?(@user) %>
-		  <%= link_to "フォロー外す", user_relationships_path(@user), method: :delete, class: "btn btn-info" %>
-		<% else %>
-		  <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn btn-success" %>
-		<% end %>
-	  <% end %>
-	  メールアドレス:<%= @user.email %>
-	</div>
-  </div>
-  <tr>
-	<td></td>
-	<td>
-	  <% if @user == current_user %>
-	    <%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %>
-	  <% end %>
-	</td>
-  </tr>
-  <h2><%= @user.name %>さんの投稿</h2>
-  <div class="row">
-	<% @user.posts.each do |post| %>
-	  <table>
-	    <thead>
-	      <tr>
-	    	<td>
-	          <div class="col-6">
-	    		<%= link_to post_path(post) do %>
-	    		  <%= attachment_image_tag post, :image, class: "image-size" %>
-	    		<% end %>
-	          </div>
-	    	</td>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <tr>
-	    	<td>
-	          <div class="col-6">
-	    		<%= link_to user_path(post.user_id) do %>
-	    		  <%= attachment_image_tag post.user, :profile_image, class: "profile-image", fallback: "no_image.png" %>
-	    		<% end %>
-	          </div>
-	    	</td>
-	      </tr>
-	      <tr>
-	        <td>魚種名：<%= post.name %></td>
-	      </tr>
-	      <tr>
-	        <td>サイズ：<%= post.size %></td>
-	      </tr>
-	    </tbody>
-	  </table>
-	<% end %>
+  	<div class="row border">
+  		<div class="col-lg-3 col-sm-12">
+  	    <div>
+	        <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png" , class: "image-circle"%>
+	  	    <table>
+	  	      <tr>
+	  	      	<th>釣り歴：<%= @user.fishing_history %></th>
+	  	      </tr>
+	  	      <tr>
+	  	      	<th>公開釣果数：<%= @user.posts.count %></th>
+	  	      </tr>
+		        <tr>
+		          <th>フォロー数: <%= @user.followings.count %></th>
+		          <td><%= link_to "フォロー一覧", user_followings_path(@user), class: "btn btn-warning pr-4" %></td>
+	    	    </tr>
+	  	      <tr>
+	  	      	<th>フォロワー数:<%= @user.followers.count %></th>
+	            <th><%= link_to "フォロワー一覧", user_followers_path(@user), class: "btn btn-primary" %></th>
+	          </tr>
+	    	  </table>
+	      </div>
+	    </div>
+      <div class="col-lg-6 col-sm-12">
+	      <div>
+	  	    <h1 class="mt-5"><%= @user.name %></h1>
+	  	    <p>自己紹介</p>
+		      <h3><%= @user.introduction %></h4>
+	      </div>
+	    </div>
+      <div class="col-lg-3 col-sm-12">
+  	    <div class="mt-5">
+	        <% if current_user != @user %>
+		        <% if current_user.following?(@user) %>
+		          <%= link_to "フォロー外す", user_relationships_path(@user), method: :delete, class: "btn btn-info" %>
+		        <% else %>
+		          <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn btn-success" %>
+		        <% end %>
+	        <% end %>
+	        <% if @user == current_user %>
+	          ユーザー編集：<%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %>
+	          メールアドレス:<%= @user.email %>
+	        <% end %>
+	      </div>
+      </div>
+  	</div>
+    <h2><%= @user.name %>さんの投稿</h2>
+    <div class="row">
+	    <% @user.posts.each do |post| %>
+		    <div class="col-lg-3 col-sm-12">
+		      <div class="post_item">
+		 	 		  <div class="card">
+ 					    <%= link_to post_path(post) do %>
+                <%= attachment_image_tag post, :image, class: "image-size" %>
+              <% end %>
+      	      <%= link_to user_path(post.user_id) do %>
+	              <%= attachment_image_tag post.user, :profile_image, class: "profile-image", fallback: "no_image.png" %>
+	            <% end %>
+	            <%= post.user.name %>
+		          <div class="card-body">
+		  	        <h5 class="card-title">魚種名：<%= post.name %></h5>
+		  	        <p class="card-text">サイズ：<%= post.size %></p>
+		  	        <p class="card-text">釣った日：<%= post.fish_time.strftime("%Y-%m-%d %H:%M") %></p>
+		          </div>
+		        </div>
+          </div>
+        </div>
+	    <% end %>
+	    <div class="col-9"></div>
+    </div>
   </div>
 </div>

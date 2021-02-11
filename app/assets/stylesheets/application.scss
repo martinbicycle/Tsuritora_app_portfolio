@@ -36,6 +36,7 @@ body {
   position: relative;
   padding-bottom: 90px;
   padding-top: 90px;
+  font-family: system-ui;
 }
 
 
@@ -66,7 +67,7 @@ ul {
 }
 
 a {
-  // color: #ffffff;
+  color :#f8f9fa;
   text-decoration: none;
   display: block;
   line-height: 60px;
@@ -87,6 +88,10 @@ a:visited{
 ************************************/
 
 @media (max-width: 1056px) {
+
+  body {
+    font-size: 2rem;
+  }
 
   .big {
     display: none;

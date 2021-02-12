@@ -4,6 +4,11 @@ class Post < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
+  enum wc: {トイレ：有り: 0, トイレ：無し: 1}
+  enum parking: {駐車場：有り: 0, 駐車場：無し: 1}
+  enum convenience_store: {コンビニ：有り: 0, コンビニ：無し: 1}
+  enum fishing_bait: {釣りエサ屋：有り: 0, 釣りエサ屋：無し: 1}
+
   belongs_to :user
   has_many :tackles, :through => :post_tackles
   has_many :post_tags, dependent: :destroy

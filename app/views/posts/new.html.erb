@@ -37,7 +37,39 @@
           <tr><td><%= f.label :address, '場所' %></td></tr>
           <tr><td><%= f.text_field :address, placeholder: "紹介したい住所を入力してください", class: "form-control" %></td></tr>
           <tr>
-        	<td class="text-center">
+            <td>
+              トイレ：<%= f.label :有り %>
+              <%= f.radio_button :wc, :トイレ：有り %>
+              <%= f.label :無し %>
+              <%= f.radio_button :wc, :トイレ：無し %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              駐車場：<%= f.label :有り %>
+              <%= f.radio_button :parking, :駐車場：有り %>
+              <%= f.label :無し %>
+              <%= f.radio_button :parking, :駐車場：無し %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              コンビニ：<%= f.label :有り %>
+              <%= f.radio_button :convenience_store, :コンビニ：有り %>
+              <%= f.label :無し %>
+              <%= f.radio_button :convenience_store, :コンビニ：無し %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              釣りエサ屋さん：<%= f.label :有り %>
+              <%= f.radio_button :fishing_bait, :釣りエサ屋：有り %>
+              <%= f.label :無し %>
+              <%= f.radio_button :fishing_bait, :釣りエサ屋：無し %>
+            </td>
+          </tr>
+          <tr>
+        	  <td class="text-center">
           	  <%= button_tag :type => "submit", :class =>"btn btn-info btn-lg btn-block" do %>
                 <i class="fas fa-fish"></i>投稿する
               <% end %>

@@ -1,9 +1,9 @@
 <div class="container">
 　<div class="row">
     <div class="col-1"></div>
-	　<div class="col-9">
-	    <h1 class="mt-5 text-center">投稿を編集する</h1>
-	    <%= form_with(model: @post, local: true) do |f| %>
+	　<div class="col-9 border">
+      <h1 class="mt-5 text-center">投稿を編集する</h1>
+      <%= form_with(model: @post, local: true) do |f| %>
         <table class="table">
           <tr>
             <td><%= f.label :写真 %></td>
@@ -20,7 +20,7 @@
           <tr><td><%= f.label :魚種 %></td></tr>
           <tr><td><%= f.text_field :name, class: "form-control" %></td></tr>
           <tr><td><%= f.label :サイズ %></td></tr>
-          <tr><td><%= f.text_field :size, class: "form-control" %></td></tr>
+          <tr><td><%= f.text_field :size, placeholder: "〇〇センチ", class: "form-control" %></td></tr>
           <tr><td><%= f.label :タックル %></td></tr>
           <tr><td><%= f.collection_select :tackle, @tackles, :id, :name, {:prompt => "選択して下さい"}, {multiple: true, class: "btn btn-light"} %></td></tr>
         　<tr><td><%= f.label :ルアー %></td></tr>
@@ -31,15 +31,47 @@
           <tr>
             <td>
               <%= f.text_field :tag_ids, class: "form-control", id:'tag_ids',\
-              placeholder: "複数つけるには','で区切ってください。" %>
+              placeholder: "複数つけるには','で区切ってください" %>
             </td>
           </tr>
           <tr><td><%= f.label :address, '場所' %></td></tr>
-          <tr><td><%= f.text_field :address, placeholder: "住所を入力してください", class: "form-control" %></td></tr>
+          <tr><td><%= f.text_field :address, placeholder: "紹介したい住所を入力してください", class: "form-control" %></td></tr>
           <tr>
-        	<td class="text-center">
+            <td>
+              トイレ：<%= f.label :有り %>
+              <%= f.radio_button :wc, :トイレ：有り %>
+              <%= f.label :無し %>
+              <%= f.radio_button :wc, :トイレ：無し %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              駐車場：<%= f.label :有り %>
+              <%= f.radio_button :parking, :駐車場：有り %>
+              <%= f.label :無し %>
+              <%= f.radio_button :parking, :駐車場：無し %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              コンビニ：<%= f.label :有り %>
+              <%= f.radio_button :convenience_store, :コンビニ：有り %>
+              <%= f.label :無し %>
+              <%= f.radio_button :convenience_store, :コンビニ：無し %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              釣りエサ屋さん：<%= f.label :有り %>
+              <%= f.radio_button :fishing_bait, :釣りエサ屋：有り %>
+              <%= f.label :無し %>
+              <%= f.radio_button :fishing_bait, :釣りエサ屋：無し %>
+            </td>
+          </tr>
+          <tr>
+        	  <td class="text-center">
           	  <%= button_tag :type => "submit", :class =>"btn btn-info btn-lg btn-block" do %>
-                <i class="fas fa-fish"></i>釣果を投稿する
+                <i class="fas fa-fish"></i>投稿を更新する！
               <% end %>
           	</td>
           </tr>

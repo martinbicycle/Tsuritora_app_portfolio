@@ -6,12 +6,12 @@
           <%= attachment_image_tag comment.user, :profile_image, class: "profile-image", fallback: "no_image.png" %>
         <% end %>
       </td>
-      <td><h3><%= comment.body %></h3></td>
+      <td><h6><%= comment.body %></h6></td>
       <td><%= comment.created_at.strftime('%m/%d') %></td>
       <td>
         <% if comment.user == current_user %>
           <div class="comment-delete">
-            <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-danger" %>
+            <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-danger ml-5" %>
           </div>
         <% end %>
       </td>

@@ -1,5 +1,5 @@
 <% if post.favorited_by?(current_user) %>
-  <%= link_to post.favorites.count, post_favorites_path(post), method: :delete, remote: true, class: "fas fa-fish fish_red" %>
+  ナイスフィッシュ！<%= link_to post.favorites.count, post_favorites_path(post), method: :delete, remote: true, class: "fas fa-fish fish_red" %>
 <% else %>
-  <%= link_to post.favorites.count, post_favorites_path(post), method: :post, remote: true, class: "fas fa-fish fish_blue" %>
+  ナイスフィッシュ！<%= link_to post.favorites.count, post_favorites_path(post), method: :post, remote: true, class: "fas fa-fish fish_blue" %>
 <% end %>

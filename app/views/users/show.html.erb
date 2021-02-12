@@ -39,7 +39,7 @@
 		        <% end %>
 	        <% end %>
 	        <% if @user == current_user %>
-	          ユーザー編集：<%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %>
+	          ユーザー編集：<%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %></br>
 	          メールアドレス:<%= @user.email %>
 	        <% end %>
 	      </div>
@@ -47,27 +47,27 @@
   	</div>
     <h2><%= @user.name %>さんの投稿</h2>
     <div class="row">
-	    <% @user.posts.each do |post| %>
-		    <div class="col-lg-3 col-sm-12">
-		      <div class="post_item">
-		 	 		  <div class="card">
- 					    <%= link_to post_path(post) do %>
+	  <% @user.posts.each do |post| %>
+        <div class="col-lg-3 col-sm-12">
+		  <div class="post_item">
+		    <div class="card">
+ 			  <%= link_to post_path(post) do %>
                 <%= attachment_image_tag post, :image, class: "image-size" %>
               <% end %>
       	      <%= link_to user_path(post.user_id) do %>
-	              <%= attachment_image_tag post.user, :profile_image, class: "profile-image", fallback: "no_image.png" %>
-	            <% end %>
-	            <%= post.user.name %>
-		          <div class="card-body">
+	            <%= attachment_image_tag post.user, :profile_image, class: "profile-image", fallback: "no_image.png" %>
+	          <% end %>
+	          <%= post.user.name %>
+		      <div class="card-body">
 		  	        <h5 class="card-title">魚種名：<%= post.name %></h5>
 		  	        <p class="card-text">サイズ：<%= post.size %></p>
 		  	        <p class="card-text">釣った日：<%= post.fish_time.strftime("%Y-%m-%d %H:%M") %></p>
 		          </div>
-		        </div>
+		    </div>
           </div>
         </div>
-	    <% end %>
-	    <div class="col-9"></div>
+	  <% end %>
+	  <div class="col-9"></div>
     </div>
   </div>
 </div>

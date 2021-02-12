@@ -9,8 +9,12 @@ class TacklesController < ApplicationController
     @user = current_user
     @tackle = Tackle.new(tackle_params)
     @tackle.user_id = current_user.id
-    @tackle.save
-    redirect_to edit_user_path(@user)
+    if @tackle.save
+     redirect_to edit_user_path(@user), success: "追加しました"
+    else
+      redirect_to new_user_tackle_path(@user), alert: "釣り具が入力されていません"
+    end
+
   end
 
   def destroy

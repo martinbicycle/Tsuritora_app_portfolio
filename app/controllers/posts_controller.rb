@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @posts = Post.all
@@ -18,37 +19,49 @@ class PostsController < ApplicationController
   end
 
   def create
+    @tackles = current_user.tackles
     @post = Post.new(post_params)
     tag_list = params[:post][:tag_ids].split(',')
     @post.user_id = current_user.id
-    @post.save
-    params[:post][:tackle].each do |tackle|
+    if @post.save
+      params[:post][:tackle].each do |tackle|
       post_tackle = PostTackle.new(post_id: @post.id, tackle_id: tackle)
       post_tackle.save
+      end
+      @post.save_tags(tag_list)
+      redirect_to post_path(@post)
+    else
+      render :new
     end
-    @post.save_tags(tag_list)
-    redirect_to post_path(@post)
+
   end
 
   def edit
     @tackles = current_user.tackles
     @post = Post.find(params[:id])
     @tag_list = @post.tags.pluck(:name).join(",")
+    if @post.user != current_user
+      redirect_to posts_path, alert: '不正なアクセスです'
+    end
   end
 
   def update
+    @tackles = current_user.tackles
     @post = Post.find(params[:id])
     tag_list = params[:post][:tag_ids].split(',')
-    @post.update_attributes(post_params)
     @post.save_tags(tag_list)
-    redirect_to post_path(@post)
+    if @post.update_attributes(post_params)
+      redirect_to post_path(@post), success: "更新しました"
+    else
+      render :edit
+    end
   end
 
   def destroy
     @user = current_user
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to user_path(@user)
+    redirect_to user_path(@user), alert: "削除しました"
   end
 
   private

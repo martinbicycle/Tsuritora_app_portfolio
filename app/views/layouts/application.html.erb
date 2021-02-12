@@ -8,7 +8,12 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <p class="notice"><%= notice %></p><p class="alert"><%= alert %></p>
+    <% flash.each do |name, msg| %>
+    <div class="alert alert-<%= name %>">
+    <a class="close" data-dismiss="alert">×</a>
+    <%= msg %>
+    </div>
+<% end %>
   <body>
     <% if admin_signed_in? %>
     <header>

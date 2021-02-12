@@ -3,6 +3,15 @@
     <div class="col-1"></div>
 	　<div class="col-9 border">
       <h1 class="mt-5 text-center">投稿を編集する</h1>
+      <% if @post.errors.any? %>
+        <div>
+          <ul style="color: red">
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <%= form_with(model: @post, local: true) do |f| %>
         <table class="table">
           <tr>

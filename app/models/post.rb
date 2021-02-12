@@ -4,6 +4,26 @@ class Post < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
+  validate :add_error
+
+  def add_error
+    # 画像が空のときにエラーメッセージを追加する
+    if image.blank?
+      errors[:base] << "画像が選択されていません"
+    end
+
+    # タイトルが空のときにエラーメッセージを追加する
+    if name.blank?
+      errors[:base] << "タイトルが入力されていません"
+    end
+
+    # 釣った日が空のときにエラーメッセージを追加する
+    if fish_time.blank?
+      errors[:base] << "釣った日が入力されてません"
+    end
+
+  end
+
   enum wc: {トイレ：有り: 0, トイレ：無し: 1}
   enum parking: {駐車場：有り: 0, 駐車場：無し: 1}
   enum convenience_store: {コンビニ：有り: 0, コンビニ：無し: 1}

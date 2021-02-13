@@ -7,17 +7,22 @@
         お問い合わせ件数：<%= @contacts.count %>
       <% @contacts.each do |contact| %>
         <table class="table">
-          <tr>
-            <td>
-              お問い合わせタイトル：<%= contact.title %><%= link_to "詳細", contact_path(contact), class: "btn btn-primary" %>
-            <td>
-            <td>
-            </td>
-            <td>
-              お問い合わせユーザー：<%= contact.user.name %>
-              <%= link_to "詳細", user_path(contact.user_id), class: "btn btn-primary" %>
-            <td>
-          </tr>
+          <thead>
+            <tr>
+              <th>お問い合わせタイトル</th>
+              <td></td>
+              <th>お問い合わせユーザー</th>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= contact.title %></td>
+              <td><%= link_to "詳細", contact_path(contact), class: "btn btn-primary" %></td>
+              <td><%= contact.user.name %></td>
+              <td><%= link_to "詳細", user_path(contact.user_id), class: "btn btn-primary" %></td>
+            </tr>
+          </tbody>
         </table>
       <% end %>
     </div>

@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index]or
+  before_action :authenticate_admin!
 
   def index
     @posts = Post.all
@@ -66,6 +67,10 @@ class PostsController < ApplicationController
 
   private
     def post_params
+      params[:post][:wc] = params[:post][:wc].to_i
+      params[:post][:parking] = params[:post][:parking].to_i
+      params[:post][:convenience_store] = params[:post][:convenience_store].to_i
+      params[:post][:fishing_bait] = params[:post][:fishing_bait].to_i
       params.require(:post).permit(
         :name, :body, :image, :size, :fish_time,
         :address, :latitude, :longitude, :lure,

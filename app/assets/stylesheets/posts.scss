@@ -74,6 +74,27 @@ input {
 	margin-left: 30px;
 }
 
+
+.form-icons {
+	font-size:80px;
+	color:#eee;
+	display:flex;
+	.fas.active {
+		color:#17a2b8;
+	}
+	.fab.active {
+		color:#17a2b8;
+	}
+	a {
+		color:inherit;
+	}
+}
+
+input.hidden {
+  visibilty: hidden;
+}
+
+
 @media (max-width: 1056px) {
 
 	.image-size {

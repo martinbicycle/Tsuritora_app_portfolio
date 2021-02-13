@@ -1,25 +1,24 @@
 <div class="container">
-  <h1>マイページ</h1>
-  	<div class="row border">
-  		<div class="col-lg-3 col-sm-12">
-  	    <div>
-	        <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png" , class: "image-circle"%>
-	  	    <table>
-	  	      <tr>
-	  	      	<th>釣り歴：<%= @user.fishing_history %></th>
-	  	      </tr>
-	  	      <tr>
-	  	      	<th>公開釣果数：<%= @user.posts.count %></th>
-	  	      </tr>
-		        <tr>
-		          <th>フォロー数: <%= @user.followings.count %></th>
-		          <td><%= link_to "フォロー一覧", user_followings_path(@user), class: "btn btn-warning pr-4" %></td>
-	    	    </tr>
-	  	      <tr>
-	  	      	<th>フォロワー数:<%= @user.followers.count %></th>
-	            <th><%= link_to "フォロワー一覧", user_followers_path(@user), class: "btn btn-primary" %></th>
-	          </tr>
-	    	  </table>
+  <div class="row border">
+  	<div class="col-lg-3 col-sm-12">
+  	  <div>
+	      <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png" , class: "image-circle"%>
+	  	  <table>
+	  	    <tr>
+	  	      <th>釣り歴：<%= @user.fishing_history %></th>
+	  	    </tr>
+	  	    <tr>
+	  	      <th>公開釣果数：<%= @user.posts.count %></th>
+	  	    </tr>
+		      <tr>
+		        <th>フォロー数: <%= @user.followings.count %></th>
+		        <td><%= link_to "フォロー一覧", user_followings_path(@user), class: "btn btn-warning pr-4" %></td>
+	    	  </tr>
+	  	    <tr>
+	  	      <th>フォロワー数:<%= @user.followers.count %></th>
+	          <th><%= link_to "フォロワー一覧", user_followers_path(@user), class: "btn btn-primary" %></th>
+	        </tr>
+	    	</table>
 	      </div>
 	    </div>
       <div class="col-lg-6 col-sm-12">
@@ -38,7 +37,7 @@
 		          <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn btn-success" %>
 		        <% end %>
 	        <% end %>
-	        <% if @user == current_user %>
+	        <% if @user == current_user || admin_signed_in? %>
 	          ユーザー編集：<%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %></br>
 	          メールアドレス:<%= @user.email %>
 	        <% end %>

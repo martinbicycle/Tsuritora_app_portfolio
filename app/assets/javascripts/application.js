@@ -62,4 +62,23 @@ $(function() {
    $('#filename, #btn').click(function() {
        $('#files').trigger('click');
    });
+
+   document.querySelectorAll(".form-icons .form-icon .toggle-icon").forEach(el => {
+    el.addEventListener("click", formIconToggle)
+  })
 });
+
+
+
+function formIconToggle(event) {
+  const icon = event.target
+  const wrapFormIconEl = icon.parentElement
+  const input = wrapFormIconEl.nextElementSibling
+  if (input.value === "0") {
+    icon.classList.add("active")
+    input.value = 1
+  } else {
+    icon.classList.remove("active")
+    input.value = 0
+  }
+}

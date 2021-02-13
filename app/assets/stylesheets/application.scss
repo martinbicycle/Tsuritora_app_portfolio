@@ -68,15 +68,12 @@ ul {
 }
 
 a {
-  color :#f8f9fa;
+  color :#17a2b8;
   text-decoration: none;
   display: block;
   line-height: 60px;
   padding: 0 20px;
-}
-
-a:visited{
-  color: #yello;
+  text-align: center;
 }
 
 .small {
@@ -155,10 +152,7 @@ a:visited{
     flex-direction: column;
   }
 
-  a {
-    text-align: center;
-    border-top: solid 0.5px rgba(255, 255, 255, 0.6);
-  }
+
 }
 
 

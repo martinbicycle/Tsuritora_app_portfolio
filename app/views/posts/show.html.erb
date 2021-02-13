@@ -32,13 +32,13 @@
 	        <tr>
 	      	  <td><h5>ひとこと</h5></td>
 	        </tr>
-	     	<tr><td><%= @post.body %></td>
+	     	<tr><td><%= simple_format@post.body %></td>
 	      </table>
 	    </div>
 	    <div>
      	  <% if @post.wc_before_type_cast == 1 %>
      	    <i class="fas fa-toilet"></i>
-      	  <% end %>
+      	　<% end %>
      	  <% if @post.parking_before_type_cast == 1 %>
      	    <i class="fas fa-parking"></i>
      	  <% end %>
@@ -62,10 +62,10 @@
     	  	  <%= render "favorites/favorite-btn", post: @post %></span></td>
     	    <td>コメント数：<%= @post.comments.count %>件</td>
     	    <% if user_signed_in? %>
-	    	  <% if @post.user_id == current_user.id%>
-		        <td><%= link_to "編集", edit_post_path(@post), class: "btn btn-success" %></td>
-		        <td><%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %></td>
-		      <% end %>
+		    	  <% if @post.user_id == current_user.id%>
+			        <td><%= link_to "編集", edit_post_path(@post), class: "btn btn-success" %></td>
+			        <td><%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %></td>
+			      <% end %>
 	        <% end %>
 	      </tr>
 	    </table>

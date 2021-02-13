@@ -6,8 +6,10 @@ class SearchController < ApplicationController
 		@method = params[:method]
 		if @model == 'post'
 			@records = Post.search_for(@content, @method)
-		else
+		elsif
 			@records = Column.search_for(@content, @method)
+		elsif
+			@records = Tag.search_for(@content, @method)
 		end
 	end
 end

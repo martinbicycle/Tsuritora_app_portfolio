@@ -3,7 +3,7 @@ class Column < ApplicationRecord
   belongs_to :admin
 
   def self.search_for(content, method)
-    Column.where('title LIKE ?', '%'+content+'%').or(Post.where(
+    Column.where('title LIKE ?', '%'+content+'%').or(Column.where(
     'body LIKE ?', '%'+content+'%'))
   end
 

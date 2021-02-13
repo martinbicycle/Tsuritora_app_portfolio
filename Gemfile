@@ -72,3 +72,4 @@ gem 'font-awesome-sass', '~> 5.13'
 gem "gmaps4rails"
 gem "geocoder"
 gem "dotenv-rails"
+gem 'kaminari-bootstrap', '~> 3.0.1'

@@ -14,15 +14,9 @@
 			<% end %>
 		    <p class="ml-3"><%= post.user.name %></p>
 		    <div class="card-body">
-		      <tr>
-		        <th>魚種名：<%= post.name %><br></th>
-		      </tr>
-		      <tr>
-		        <th>サイズ：<%= post.size %></p></th>
-		      </tr>
-		      <tr>
-		    	<th>釣った日：<%= post.fish_time.strftime("%Y-%m-%d %H:%M") %></th>
-		      </tr>
+			  <p class="card-title"><strong>魚種名：<%= post.name %></strong></p>
+			  <p class="card-text">サイズ：<%= post.size %></p>
+			  <p class="card-text">釣った日：<%= post.fish_time.strftime("%Y-%m-%d %H:%M") %></p>
 	        </div>
 		  </div>
 		</div>

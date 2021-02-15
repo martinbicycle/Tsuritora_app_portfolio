@@ -3,39 +3,38 @@
     <div class="col-1"></div>
 	　<div class="col-9">
 	    <h1 class="text-center">
-          <%= @post.user.name %>さんの投稿
-        </h1>
-        <%= attachment_image_tag(@post.user, :profile_image, class: "image-circle", fallback: "no_image.png") %>
+        <%= @post.user.name %>さんの投稿
+      </h1>
+      <%= attachment_image_tag(@post.user, :profile_image, class: "image-circle", fallback: "no_image.png") %>
+      <table>
+        <tr><th>写真</th></tr>
+  	    <tr><td><%= attachment_image_tag @post, :image, class: "fish-image" %></td></tr>
+      </table>
+      <div class="border">
+        <tr><h3 class="border">データ</h3></tr>
         <table>
-          <tr><th>写真</th></tr>
-    	  <tr><td><%= attachment_image_tag @post, :image, class: "fish-image" %></td></tr>
+          <tr>
+            <th>魚種：<%= @post.name %></th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>釣れた日：<%= @post.fish_time.strftime("%m-%d %H:%M") %></th>
+            <th>釣り道具：<%= @tackles %></th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>ルアー：<%= @post.lure %></th>
+    	      <td></td>
+            <th>サイズ:<%= @post.size %></th>
+            <td></td>
+          </tr>
+          <tr>
+      	    <td><h5>ひとこと</h5></td>
+          </tr>
+     	    <tr><td><%= simple_format@post.body %></td>
         </table>
-        <div class="border">
-          <tr><h3 class="border">データ</h3></tr>
-	      <table>
-	        <tr>
-	          <th>魚種：<%= @post.name %></th>
-	          <td></td>
-	        </tr>
-	        <tr>
-	          <th>釣れた日：<%= @post.fish_time.strftime("%m-%d %H:%M") %></th>
-	          <td></td>
-	          <th>釣り道具：<%= @tackles %></th>
-	          <td></td>
-	        </tr>
-	        <tr>
-	          <th>ルアー：<%= @post.lure %></th>
-	    	  <td></td>
-              <th>サイズ:<%= @post.size %></th>
-	          <td></td>
-	        </tr>
-	        <tr>
-	      	  <td><h5>ひとこと</h5></td>
-	        </tr>
-	     	<tr><td><%= simple_format@post.body %></td>
-	      </table>
-	    </div>
-	    <div>
+      </div>
+      <div>
      	  <% if @post.wc_before_type_cast == 1 %>
      	    <i class="fas fa-toilet"></i>
       	　<% end %>
@@ -72,50 +71,49 @@
 	    <script type="text/javascript">
 	    function initMap() {
 
-		var test ={lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
-		var map = new google.maps.Map(document.getElementById('map'), {
-		      zoom: 15,
-		      center: test
-		      });
-		var transitLayer = new google.maps.TransitLayer();
-		transitLayer.setMap(map);
+			var test ={lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
+			var map = new google.maps.Map(document.getElementById('map'), {
+			      zoom: 15,
+			      center: test
+			      });
+			var transitLayer = new google.maps.TransitLayer();
+			transitLayer.setMap(map);
 
-		var contentString = '住所：<%= @post.address %>';
-		var infowindow = new google.maps.InfoWindow({
-		content: contentString
-		});
+			var contentString = '住所：<%= @post.address %>';
+			var infowindow = new google.maps.InfoWindow({
+			content: contentString
+			});
 
 
-		var marker = new google.maps.Marker({
-		          position:test,
-		          map: map,
-		          title: contentString
-		         });
+			var marker = new google.maps.Marker({
+			          position:test,
+			          map: map,
+			          title: contentString
+			         });
 
-		marker.addListener('click', function() {
-		infowindow.open(map, marker);
-		});
-		}
+			marker.addListener('click', function() {
+			infowindow.open(map, marker);
+			});
+			}
 	    </script>
     	<script async defer
 	      src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GMAP_API_KEY'] %>&callback=initMap">
 	    </script>
-
-　　　  <div id="map"></div>
-		<div class="new-comment">
-		<%= form_with(model:[@post, @comment], remote: true) do |f| %>
-		  <%= f.text_area :body, rows:'5',placeholder: "コメントをここに", class: "form-control commentbtn" %>
-		  <div class="text-right">
-		    <%= f.submit "送信する", class: "btn btn-warning" %>
+　　　<div id="map"></div>
+		  <div class="new-comment">
+				<%= form_with(model:[@post, @comment], remote: true) do |f| %>
+				  <%= f.text_area :body, rows:'5',placeholder: "コメントをここに", class: "form-control commentbtn" %>
+				  <div class="text-right">
+				    <%= f.submit "送信する", class: "btn btn-warning" %>
+				  </div>
+				<% end %>
 		  </div>
-		<% end %>
-		</div>
-      <div class="comment-btn"><%= render "comments/comment", post: @post %></div>
-	  <div class="text-center mb-5">
-	    <%= link_to user_path(@post.user_id), class: "btn btn-info" do %>
-	    　<i class="fas fa-fish"></i> <%= @post.user.name %>さんの投稿をもっと見る
-	    <% end %>
-	  </div>
+		  <div class="comment-btn"><%= render "comments/comment", post: @post %></div>
+			<div class="text-center mb-5">
+		    <%= link_to user_path(@post.user_id), class: "btn btn-info" do %>
+		    　<i class="fas fa-fish"></i> <%= @post.user.name %>さんの投稿をもっと見る
+		    <% end %>
+		  </div>
     </div>
     <div class="col-1"></div>
   </div>

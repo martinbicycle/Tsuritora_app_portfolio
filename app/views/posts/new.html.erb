@@ -1,9 +1,9 @@
 <div class="container">
 　<div class="row">
     <div class="col-1"></div>
-	　<div class="col-9 border">
+	　<div class="col-9">
+   　  <div class="card">
       <h1 class="mt-5 text-center">投稿する</h1>
-
       <% if @post.errors.any? %>
         <div>
           <ul style="color: red">
@@ -13,7 +13,6 @@
           </ul>
         </div>
       <% end %>
-
       <%= form_with(model: @post, local: true) do |f| %>
         <table class="table">
           <tr>
@@ -90,6 +89,7 @@
           </tr>
         </table>
       <% end %>
+      </div>
     <div class="col-1"></div>
   </div>
   </div>

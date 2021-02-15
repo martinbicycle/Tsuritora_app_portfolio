@@ -2,7 +2,7 @@ class TacklesController < ApplicationController
 
   def new
     @user = User.find(params[:user_id])
-    @tackle = Tackle.new
+    @tackle = Tackle.new 
   end
 
   def create
@@ -21,7 +21,7 @@ class TacklesController < ApplicationController
     @user = current_user
     @tackle = Tackle.find(params[:id])
     @tackle.destroy
-    redirect_to edit_user_path(@user)
+    redirect_to edit_user_path(@user), alert: "釣り具を削除しました"
   end
 
   private

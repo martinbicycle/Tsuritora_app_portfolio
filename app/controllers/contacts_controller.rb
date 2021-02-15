@@ -31,8 +31,12 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
-    @contact.save
-    redirect_to user_path(@contact.user_id)
+    if @contact.save
+      redirect_to user_path(@contact.user_id), success: "送信しました"
+    else
+      redirect_to new_contact_path, alert: "正しく入力されていません"
+    end
+
   end
 
 

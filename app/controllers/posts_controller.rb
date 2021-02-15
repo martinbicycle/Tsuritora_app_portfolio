@@ -31,7 +31,7 @@ class PostsController < ApplicationController
       post_tackle.save
       end
       @post.save_tags(tag_list)
-      redirect_to post_path(@post)
+      redirect_to post_path(@post), success: '投稿しました'
     else
       render :new
     end
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @tag_list = @post.tags.pluck(:name).join(",")
     if @post.user != current_user
-      redirect_to posts_path, alert: '不正なアクセスです'
+      redirect_to posts_path, danger: '不正なアクセスです'
     end
   end
 
@@ -63,7 +63,7 @@ class PostsController < ApplicationController
     @user = current_user
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to user_path(@user), alert: "削除しました"
+    redirect_to user_path(@user), danger: "削除しました"
   end
 
   private

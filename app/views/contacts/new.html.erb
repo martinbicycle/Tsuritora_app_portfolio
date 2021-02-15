@@ -1,8 +1,18 @@
 <div class="container">
 　<div class="row">
     <h1 class="text-center">コラムに書いてほしい内容を送ってください</h1>
-    <table class="table">
+      <% if @contact.errors.any? %>
+        <div>
+          <ul style="color: red">
+            <% @contact.errors.full_messages.each do |message| %>
+              <%= message %><br>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <table class="table">
       <%= form_with model: @contact do |f| %>
+      <!--<table class="table">-->
         <tr><td><%= f.label :タイトル %></td></tr>
         <tr><td><%= f.text_field :title, autofocus: true, autocomplete: "タイトル", :placeholder => "タイトル", class: "form-control" %></td></tr>
         <tr><td><%= f.label :内容 %></td></tr>
@@ -14,7 +24,7 @@
             <% end %>
           </td>
         </tr>
-      <% end %>
-    </table>
+      </table>
+    <% end %>
   </div>
 </div>

@@ -47,39 +47,35 @@
           <tr><td><%= f.label :address, '場所' %></td></tr>
           <tr><td><%= f.text_field :address, placeholder: "紹介したい住所を入力してください", class: "form-control" %></td></tr>
           <tr>
-
-          <div class="form-icons">
-            <tr>
-              <td>
-                <div class="form-icons">
-                  <div class="form-icon">
-                    <div class="toggle-icon">
-                      <i class="fas fa-toilet"></i>
-                    </div>
-                    <input name="post[wc]" type="hidden" value="0">
+            <td>
+              <div class="form-icons">
+                <div class="form-icon">
+                  <div class="toggle-icon">
+                    <i class="fas fa-toilet"></i>
                   </div>
-                  <div class="form-icon">
-                    <div class="toggle-icon">
-                      <i class="fas fa-parking"></i>
-                    </div>
-                    <input name="post[parking]" type="hidden" value="0">
-                  </div>
-                  <div class="form-icon">
-                    <div class="toggle-icon">
-                      <i class="fab fa-contao"></i>
-                    </div>
-                    <input name="post[convenience_store]" type="hidden" value="0">
-                  </div>
-                  <div class="form-icon">
-                    <div class="toggle-icon">
-                      <i class="fas fa-fish"></i>
-                    </div>
-                    <input name="post[fishing_bait]" type="hidden" value="0">
-                  </div>
+                  <input name="post[wc]" type="hidden" value="0">
                 </div>
-              </td>
-            </tr>
-          </div>
+                <div class="form-icon">
+                  <div class="toggle-icon">
+                    <i class="fas fa-parking"></i>
+                  </div>
+                  <input name="post[parking]" type="hidden" value="0">
+                </div>
+                <div class="form-icon">
+                  <div class="toggle-icon">
+                    <i class="fab fa-contao"></i>
+                  </div>
+                  <input name="post[convenience_store]" type="hidden" value="0">
+                </div>
+                <div class="form-icon">
+                  <div class="toggle-icon">
+                    <i class="fas fa-fish"></i>
+                  </div>
+                  <input name="post[fishing_bait]" type="hidden" value="0">
+                </div>
+              </div>
+            </td>
+          </tr>
           <tr>
         	  <td class="text-center">
           	  <%= button_tag :type => "submit", :class =>"btn btn-primary btn-lg btn-block" do %>

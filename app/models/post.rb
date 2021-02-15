@@ -56,9 +56,9 @@ class Post < ApplicationRecord
   end
 
 
-  def self.search_for(content, method)
-    Post.where('name LIKE ?', '%'+content+'%').or(Post.where(
-    'address LIKE ?', '%'+content+'%'))
-  end
+  # def self.search_for(content, method)
+  #   Post.where('name LIKE ?', '%'+content+'%').or(Post.where(
+  #   'address LIKE ?', '%'+content+'%'))
+  # end
 
 end

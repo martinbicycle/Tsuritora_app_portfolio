@@ -1,26 +1,32 @@
 
 <div class="container">
-	<h2>みんなの投稿</h2>
-	<div class="row">
+  <h2>みんなの投稿</h2>
+  <div class="row">
     <% @posts.each do |post| %>
-	    <div class="col-lg-3 col-sm-12">
-		    <div class="post_item">
-		 			<div class="card">
-		  			<%= link_to post_path(post) do %>
-		          <%= attachment_image_tag post, :image, class: "image-size" %>
-		        <% end %>
-	        	<%= link_to user_path(post.user_id) do %>
-			        <%= attachment_image_tag post.user, :profile_image, class: "profile-image", fallback: "no_image.png" %>
-			      <% end %>
-				    <p class="ml-3"><%= post.user.name %></p>
-					  <div class="card-body">
-					  	<p class="card-title"><strong>魚種名：<%= post.name %></strong></p>
-					  	<p class="card-text">サイズ：<%= post.size %></p>
-					  	<p class="card-text">釣った日：<%= post.fish_time.strftime("%Y-%m-%d %H:%M") %></p>
-					  </div>
-					</div>
-		    </div>
-	    </div>
+	  <div class="col-lg-3 col-sm-12">
+		<div class="post_item">
+		  <div class="card">
+		  	<%= link_to post_path(post) do %>
+		      <%= attachment_image_tag post, :image, class: "image-size" %>
+		    <% end %>
+	        <%= link_to user_path(post.user_id) do %>
+			  <%= attachment_image_tag post.user, :profile_image, class: "profile-image", fallback: "no_image.png" %>
+			<% end %>
+		    <p class="ml-3"><%= post.user.name %></p>
+		    <div class="card-body">
+		      <tr>
+		        <th>魚種名：<%= post.name %><br></th>
+		      </tr>
+		      <tr>
+		        <th>サイズ：<%= post.size %></p></th>
+		      </tr>
+		      <tr>
+		    	<th>釣った日：<%= post.fish_time.strftime("%Y-%m-%d %H:%M") %></th>
+		      </tr>
+	        </div>
+		  </div>
+		</div>
+	  </div>
     <% end %>
   </div>
   <%= paginate @posts %>

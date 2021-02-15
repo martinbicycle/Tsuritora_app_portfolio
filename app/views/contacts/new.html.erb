@@ -1,30 +1,23 @@
 <div class="container">
 　<div class="row">
+　  <div class="col-1"></div>
     <h1 class="text-center">コラムに書いてほしい内容を送ってください</h1>
-      <% if @contact.errors.any? %>
-        <div>
-          <ul style="color: red">
-            <% @contact.errors.full_messages.each do |message| %>
-              <%= message %><br>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <table class="table">
+    <div class="col-10">
       <%= form_with model: @contact do |f| %>
-      <!--<table class="table">-->
-        <tr><td><%= f.label :タイトル %></td></tr>
-        <tr><td><%= f.text_field :title, autofocus: true, autocomplete: "タイトル", :placeholder => "タイトル", class: "form-control" %></td></tr>
-        <tr><td><%= f.label :内容 %></td></tr>
-        <tr><td><%= f.text_area :body, autofocus: true, autocomplete: "本文", :placeholder => "(例)〇〇がわからないので教えてほしい...etc", class: "form-control" %></td></tr>
-        <tr>
-          <td>
-        	<%= button_tag :type => "submit", :class =>"btn btn-primary btn-lg btn-block" do %>
-              <i class="fas fa-fish"></i>　送信する
-            <% end %>
-          </td>
-        </tr>
-      </table>
-    <% end %>
+        <table class="table">
+          <tr><td><%= f.label :タイトル %></td></tr>
+          <tr><td><%= f.text_field :title, autofocus: true, autocomplete: "タイトル", :placeholder => "タイトル", class: "form-control" %></td></tr>
+          <tr><td><%= f.label :内容 %></td></tr>
+          <tr><td><%= f.text_area :body, autofocus: true, autocomplete: "本文", :placeholder => "(例)〇〇がわからないので教えてほしい...etc", class: "form-control" %></td></tr>
+          <tr>
+            <td>
+          	  <%= button_tag :type => "submit", :class =>"btn btn-primary btn-lg btn-block" do %>
+                <i class="fas fa-fish"></i>　送信する
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
   </div>
 </div>

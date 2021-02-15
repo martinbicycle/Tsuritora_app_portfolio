@@ -4,17 +4,13 @@
 	　<div class="col-10">
 	    <h1 class="mt-5 text-center">釣り具追加</h1>
 	    <%= form_with model: [@user, @tackle] do |f| %>
-        <table>
-          <tr><td><%= f.label :釣り具 %></td></tr>
-          <tr><td><%= f.text_field :name, autofocus: true, autocomplete: "釣り具", :placeholder => "ロッド名、リール名...etc", class: "form-control" %></td></tr>
-          <tr>
-          	<td>
-          	  <%= button_tag :type => "submit", :class =>"btn btn-primary" do %>
-                <i class="fas fa-fish"></i>追加する！
-              <% end %>
-          	</td>
-          </tr>
-        </table>
+        <%= f.label :釣り具 %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "釣り具", :placeholder => "ロッド名、リール名...etc", class: "form-control" %>
+        <div class="text-center">
+          <%= button_tag :type => "submit", :class =>"btn btn-primary mt-5" do %>
+            <i class="fas fa-fish"></i>追加する！
+          <% end %>
+        </div>
       <% end %>
     </div>
     <div class="col-1"></div>

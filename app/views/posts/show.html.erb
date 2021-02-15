@@ -15,21 +15,17 @@
         <table>
           <tr>
             <th>魚種：<%= @post.name %></th>
-            <td></td>
           </tr>
           <tr>
             <th>釣れた日：<%= @post.fish_time.strftime("%m-%d %H:%M") %></th>
-            <th>釣り道具：<%= @tackles %></th>
-            <td></td>
+            <th>釣り道具：<%= @tackles %><br></th>
           </tr>
           <tr>
             <th>ルアー：<%= @post.lure %></th>
-    	      <td></td>
-            <th>サイズ:<%= @post.size %></th>
-            <td></td>
+    	      <th>サイズ:<%= @post.size %></th>
           </tr>
           <tr>
-      	    <td><h5>ひとこと</h5></td>
+      	    <th>ひとこと</th>
           </tr>
      	    <tr><td><%= simple_format@post.body %></td>
         </table>
@@ -37,7 +33,7 @@
       <div>
      	  <% if @post.wc_before_type_cast == 1 %>
      	    <i class="fas fa-toilet"></i>
-      	　<% end %>
+      	<% end %>
      	  <% if @post.parking_before_type_cast == 1 %>
      	    <i class="fas fa-parking"></i>
      	  <% end %>

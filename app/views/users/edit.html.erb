@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-1"></div>
-		<div class="col-10">
+		<div class="col-lg-5 col-sm-12 mt-5">
 		  <h2>ユーザー編集</h2>
 		  <%= form_with model: @user, local: true do |f| %>
 	      <table>
@@ -19,22 +19,23 @@
 			  	<tr><td><%= f.text_field :fishing_history, class: "form-control" %></td></tr>
 				  <tr><td><%= f.label :自己紹介文 %></td></tr>
 				  <tr><td><%= f.text_area :introduction, class: "form-control" %></td></tr>
-				  <tr><td><%= f.label :釣り道具一覧 %></td></tr>
-				  </table>
+				</table>
+			</div>
+			<div class="col-lg-5 col-sm-12 mt-5">
+				<%= f.label :釣り道具一覧 %>
+					<% @tackles.each do |tackle| %>
+						<table class="table">
+							<tr>
+								<th><div><%= tackle.name %></div></th>
+								<td></td>
+								<td><%= link_to "削除",user_tackle_path(@user,tackle), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %></td>
+							</tr>
+						</table>
+					<% end %>
+		    <%= link_to "タックル追加", new_user_tackle_path(@user), class: "btn btn-info" %>
+			</div>
+			<%= f.submit :更新, class: "btn btn-primary btn-block mt-5" %>
 
-			        <% @tackles.each do |tackle| %>
-	              <div>
-				          <%= tackle.name %>
-	       	　      <%= link_to "削除",user_tackle_path(@user,tackle), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
-                </div>
-			        <% end %>
-
-		        <td>
-              <%= link_to "タックル追加", new_user_tackle_path(@user), class: "btn btn-info" %>
-			      </td>
-	  	 	  </tr>
-			  	<tr><td><%= f.submit :更新, class: "btn btn-primary btn-block mt-5" %></td></tr>
-		    </table>
 		  <% end %>
 	  </div>
 	</div>

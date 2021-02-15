@@ -14,7 +14,7 @@
       <%= content_tag :div, value, class: "alert alert-#{key}" %>
   <% end %>
   <body>
-    <% if admin_signed_in? %>
+  <% if admin_signed_in? %>
     <header>
       <div class="logo">
         <%= link_to root_path do %>
@@ -45,7 +45,7 @@
         </ul>
       </nav>
     </header>
-    <% elsif user_signed_in? %>
+  <% elsif user_signed_in? %>
     <header>
       <div class="logo">
         <%= link_to root_path do %>
@@ -82,8 +82,8 @@
         </ul>
       </nav>
     </header>
-    <% else %>
-        <header>
+  <% else %>
+    <header>
       <div class="logo">
         <%= link_to root_path do %>
           <%= image_tag 'tsuritora_logo.png', size: '180x90' %>
@@ -115,9 +115,9 @@
         </ul>
       </nav>
     </header>
-    <% end %>
+  <% end %>
     <%= render 'layouts/search' %>
-    <%= yield %>
+  <%= yield %>
     <span id="back">
       <%= link_to "#" do %>
         <%= image_tag 'okiami.png', size: '50X50' %>

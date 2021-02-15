@@ -17,7 +17,8 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-
+//= require underscore
+//= require gmaps/google
 
 $(document).ready(function () {
   $("#theTarget").skippr({

@@ -32,7 +32,7 @@
 		      <% else %>
 		        <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn btn-success" %>
 		      <% end %>
-	      <%  %>
+	      <% end %>
 	      <% if @user == current_user || admin_signed_in? %>
 	        ユーザー編集：<%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %></br>
 	        メールアドレス:<%= @user.email %>

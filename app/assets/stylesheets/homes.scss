@@ -10,19 +10,19 @@
 
 
 .image1 {
-  background-image: url(image1.jpg);
+  background-image: image-url(image1.jpg);
 }
 .image2 {
-  background-image: url(image2.jpg);
+  background-image: image-url(image2.jpg);
 }
 .image3 {
-  background-image: url(image3.jpg);
+  background-image: image-url(image3.jpg);
 }
 .image4 {
-  background-image: url(image4.jpg);
+  background-image: image-url(image4.jpg);
 }
 .image5 {
-  background-image: url(image5.jpg);
+  background-image: image-url(image5.jpg);
 }
 
 
@@ -68,12 +68,12 @@ height: 80px;
 
 /* 左アイコンのイメージ配置 画像100~200pxくらい */
 .bln.hidari:before {
-background-image: url("okiami.png") /*画像ファイル場所を記入*/
+background-image: image-url("okiami.png") /*画像ファイル場所を記入*/
 }
 
 /* 右アイコンのイメージ配置 画像*/
 .bln.migi:before {
-background-image: url("torachan_happy.png") /*画像ファイル場所を記入*/
+background-image: image-url("torachan_happy.png") /*画像ファイル場所を記入*/
 }
 
 /* 吹き出し中の文章アウトライン */

@@ -4,7 +4,7 @@
 		<div class="col-lg-5 col-sm-12 mt-5">
 		  <h2>ユーザー編集</h2>
 		  <%= form_with model: @user, local: true do |f| %>
-	      
+
 		      <tr><td><%= f.label :写真 %></td></tr>
 			    <tr>
 			    	<td>
@@ -19,7 +19,8 @@
 			  	<div><%= f.text_field :fishing_history, class: "form-control" %></div>
 				  <tr><td><%= f.label :自己紹介文 %></td></tr>
 				  <tr><td><%= f.text_area :introduction, class: "form-control" %></td></tr>
-				
+
+
 			</div>
 			<div class="col-lg-5 col-sm-12 mt-5">
 				<%= f.label :釣り道具一覧 %>

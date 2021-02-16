@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
@@ -9,9 +9,7 @@ Rails.application.routes.draw do
   get '/search', to: 'search#search'
 
   devise_for :admins, controllers: {
-    sessions:      'admins/sessions',
-    passwords:     'admins/passwords',
-    registrations: 'admins/registrations'
+    sessions: 'admins/sessions'
   }
   devise_for :users, controllers: {
     sessions:      'users/sessions',

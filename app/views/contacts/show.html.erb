@@ -4,28 +4,34 @@
 	　<div class="col-8">
 	    <h1 class="mt-5 text-center">お問い合わせ内容</h1>
 	    <table class="table">
+	    	<tr>
+	    		<th>お問い合わせ日時</th>
+	    	</tr>
+	    	<tr>
+	    		<td><%= @contact.created_at.strftime("%m-%d %H:%M") %></td>
+	    	</tr>
 	      <tr>
-	        <td>問い合わせユーザー名</td>
+	        <th>問い合わせユーザー名</th>
 	      </tr>
 	      <tr>
 	        <td><%= @contact.user.name %></td>
 	      </tr>
 	      <tr>
-	        <td>問い合わせタイトル</td>
+	        <th>問い合わせタイトル</th>
 	      </tr>
 	      <tr>
 	        <td><%= @contact.title %></td>
 	      </tr>
 	      <tr>
-	        <td>問い合わせ内容</td>
+	        <th>問い合わせ内容</th>
 	      </tr>
 	      <tr>
 	        <td><%= @contact.body %></td>
 	      </tr>
 	    </table>
-	     <%= link_to contacts_path do %>
-	       お問い合わせ一覧へ戻る
-	     <% end %>
+	    <div class="text-center">
+	    	<%= link_to "お問い合わせ一覧へ戻る", contacts_path, class: "btn btn-info" %>
+	    </div>
     </div>
     <div class="col-2"></div>
   </div>

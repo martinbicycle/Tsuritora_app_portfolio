@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
 
   def show
     if current_admin
       @user = User.find(params[:id])
       @posts = Post.page(params[:page]).per(20)
-    elsif
+    elsif current_user
       @user = User.find(params[:id])
       @posts = Post.page(params[:page]).per(20)
+    elsif
+      redirect_to root_path, alert: "ログインしてください"
     end
   end
 

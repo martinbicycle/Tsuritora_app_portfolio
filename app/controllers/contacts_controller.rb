@@ -3,6 +3,7 @@ class ContactsController < ApplicationController
   def index
     if current_admin
       @contacts = Contact.all
+      @contacts = Contact.page(params[:page]).per(10)
     elsif current_user
       redirect_to user_path(current_user), alert: '不正なアクセスです'
     else

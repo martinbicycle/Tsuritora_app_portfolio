@@ -10,9 +10,10 @@
           <thead>
             <tr>
               <th>お問い合わせタイトル</th>
-              <td></td>
+              <th></th>
               <th>お問い合わせユーザー</th>
-              <td></td>
+              <th></th>
+              <th>確認したら✅</th>
             </tr>
           </thead>
           <tbody>
@@ -21,6 +22,7 @@
               <td><%= link_to "詳細", contact_path(contact), class: "btn btn-primary" %></td>
               <td><%= contact.user.name %></td>
               <td><%= link_to "詳細", user_path(contact.user_id), class: "btn btn-primary" %></td>
+              <td><%= check_box_tag :sample %></td>
             </tr>
           </tbody>
         </table>
@@ -28,4 +30,5 @@
     </div>
     <div class="col-1"></div>
   </div>
+  <%= paginate @contacts %>
 </div>

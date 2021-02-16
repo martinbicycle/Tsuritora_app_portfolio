@@ -6,9 +6,9 @@
 	    <tr><td><%= f.label :写真 %></td></tr>
 	    <tr>
 		  <td>
-            <div id="btn"><i class="fas fa-plus-circle fa-3x circle_color"></i></div>
-              <%= f.attachment_field :profile_image, id: "files" %>
-            <input type="text" id="filename" placeholder="選択されていません" readonly />
+        <div id="btn"><i class="fas fa-plus-circle fa-3x circle_color"></i></div>
+          <%= f.attachment_field :profile_image, id: "files" %>
+        <input type="text" id="filename" placeholder="選択されていません" readonly />
 		  </td>
 	    </tr>
 	    <tr><td><%= f.label :ニックネーム %></td></tr>
@@ -24,12 +24,12 @@
       <h4>釣り具一覧</h4>
 	  <% @tackles.each do |tackle| %>
 	    <table class="table">
-		  <tr>
-			<th><div><%= tackle.name %></div></th>
-			<td></td>
-		    <td><%= link_to "削除",user_tackle_path(@user,tackle), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %></td>
-		  </tr>
-		</table>
+			  <tr>
+				<th><div><%= tackle.name %></div></th>
+				<td></td>
+			    <td><%= link_to "削除",user_tackle_path(@user,tackle), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %></td>
+			  </tr>
+			</table>
 	  <% end %>
 	  <%= link_to "タックル追加", new_user_tackle_path(@user), class: "btn btn-info" %>
     </div>

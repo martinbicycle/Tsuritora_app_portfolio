@@ -9,19 +9,24 @@
                              新規会員登録が必要になります。</p>
 　　　<p class="text-center">
 　　　   ★　マナーを守って楽しい釣りをしましょう　　<br>
-　　　   ★釣り禁止エリアでの釣りはやめましょう　　<br>
+　　　   ★　釣り禁止エリアでの釣りはやめましょう　　<br>
 　　　   ★　釣り場はきれいに、ゴミは持ち帰りましょう<br>
 　　　</p>
 　　　<div class="text-center">
-    　   <%= link_to new_user_registration_path, class: "btn btn-secondary btn-lg btn-block"  do %>
+    　   <%= link_to new_user_registration_path, class: "btn btn-secondary btn-lg btn-block" do %>
     　　    つりトラを始める（新規会員登録)
 　　  　<% end %>
 　　　</div>
 　　　<div class="text-center">
-　　　  <%= link_to new_user_session_path, class: "btn btn-warning btn-lg btn-block"  do %>
+　　　  <%= link_to new_user_session_path, class: "btn btn-warning btn-lg btn-block" do %>
 　　　    ログイン
 　　  　<% end %>
 　　　</div>
+　　　<div class="text-center">
+　　  　<%= link_to users_guest_sign_in_path, method: :post, class: "btn btn-info btn-lg btn-block" do %>
+　　  　 ゲストログインはこちら
+　　  　<% end %>
+　　  </div>
 　　　<div id="container">
       　<div id="theTarget">
         　<div class="image1"></div>

@@ -3,8 +3,8 @@
     <div class="col-2"></div>
 	　<div class="col-8">
 	    <h1 class="text-center">コラムの投稿</h1>
-      <table class="table">
-      	<%= form_with(model: @column, local: true) do |f| %>
+	    <%= form_with(model: @column, local: true) do |f| %>
+        <table class="table">
           <tr><td><%= f.label :タイトル %></td></tr>
           <tr><td><%= f.text_field :title, class: 'form-control' %></td></tr>
           <tr></tr><td><%= f.label :画像, class: 'control-label' %></td></tr>
@@ -24,8 +24,8 @@
               <% end %>
           	</td>
           </tr>
-        <% end %>
-      </table>
+        </table>
+      <% end %>
     </div>
     <div class="col-2"></div>
   </div>

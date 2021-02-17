@@ -1,6 +1,6 @@
 class ColumnsController < ApplicationController
   before_action :authenticate_admin!, except: [:index, :show]
-  
+
   def index
     @columns = Column.all
   end
@@ -16,8 +16,11 @@ class ColumnsController < ApplicationController
   def create
     @column = Column.new(column_params)
     @column.admin_id = current_admin.id
-    @column.save
-    redirect_to column_path(@column)
+    if @column.save
+      redirect_to column_path(@column), success: '投稿しました'
+    else
+      redirect_to new_column_path, alert: '入力されていない項目があります'
+    end
   end
 
   def edit

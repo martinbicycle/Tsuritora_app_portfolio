@@ -6,5 +6,5 @@
   <%= render 'columns/index', columns: @records %>
 <% elsif @model == 'tag' %>
 	<h3>タグの検索結果 "<%= @content %>"</h3>
-  <%= render 'tags/index', tags: @records %>
+  <%= render 'posts/index', posts: @records %>
 <% end %>

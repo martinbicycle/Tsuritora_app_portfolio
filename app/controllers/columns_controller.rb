@@ -1,5 +1,6 @@
 class ColumnsController < ApplicationController
-  before_action :authenticate_admin!, except: [:index]
+  before_action :authenticate_admin!, except: [:index, :show]
+  
   def index
     @columns = Column.all
   end

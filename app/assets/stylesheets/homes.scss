@@ -3,6 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+*,*::before, *::after {
+  box-sizing: border-box;
+}
+
+
 #container{
   height: 500px;
   margin-bottom: 50px;
@@ -24,17 +30,6 @@
 .image5 {
   background-image: image-url("image5.jpg");
 }
-
-
-
-.background-image {
-  background-image: image-url("sea.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-
 
 .bln {
 width: 100%;

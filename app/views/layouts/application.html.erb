@@ -8,11 +8,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <% flash.each do |key, value| %>
-      <% key = "info" if key == "notice" %>
-      <% key = "danger"  if key == "alert" %>
-      <%= content_tag :div, value, class: "alert alert-#{key}" %>
-  <% end %>
   <body>
   <% if admin_signed_in? %>
     <header>
@@ -117,6 +112,11 @@
     </header>
   <% end %>
     <%= render 'layouts/search' %>
+    <% flash.each do |key, value| %>
+      <% key = "info" if key == "notice" %>
+      <% key = "danger"  if key == "alert" %>
+    <%= content_tag :div, value, class: "alert alert-#{key}" %>
+    <% end %>
   <%= yield %>
     <span id="back">
       <%= link_to "#" do %>

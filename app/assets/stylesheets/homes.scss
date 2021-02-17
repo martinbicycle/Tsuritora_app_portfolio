@@ -71,6 +71,35 @@ height: 80px;
 background-image: image-url("okiami.png") /*画像ファイル場所を記入*/
 }
 
+.bln.hidari {
+    animation-name: huwahuwa;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: 1s;
+}
+
+.bln.migi.fxd--rr {
+    animation-name: huwahuwa;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: 1s;
+}
+
+
+
+@keyframes huwahuwa {
+    0% {
+        transform: translate(0,0px);
+    }
+
+    100% {
+        transform: translate(0,-15px)
+
+    }
+}
+
 /* 右アイコンのイメージ配置 画像*/
 .bln.migi:before {
 background-image: image-url("torachan_happy.png") /*画像ファイル場所を記入*/

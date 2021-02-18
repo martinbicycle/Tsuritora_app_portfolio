@@ -42,6 +42,7 @@ class PostsController < ApplicationController
     @tackles = current_user.tackles
     @post = Post.find(params[:id])
     @tag_list = @post.tags.pluck(:name).join(",")
+    @post.tag_names = @tag_list
     if @post.user != current_user
       redirect_to posts_path, danger: '不正なアクセスです'
     end
@@ -50,7 +51,7 @@ class PostsController < ApplicationController
   def update
     @tackles = current_user.tackles
     @post = Post.find(params[:id])
-    tag_list = params[:post][:tag_ids].split(',')
+    tag_list = params[:post][:tag_names].split(',')
     @post.save_tags(tag_list)
     if @post.update_attributes(post_params)
       redirect_to post_path(@post), success: "更新しました"

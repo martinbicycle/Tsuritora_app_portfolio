@@ -13,7 +13,6 @@
 	      <% end %>
 	      <div class="line-it-button" data-lang="ja" data-type="share-b" data-ver="3" data-url="http://tsuritora.com/posts/<%= @post.id %>" data-color="default" data-size="large" data-count="true" style="display: none;"></div>
           <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
-	      </div>
 	      <table>
 	        <tr><th>写真</th></tr>
 	  	    <tr><td><%= attachment_image_tag @post, :image, class: "fish-image" %></td></tr>
@@ -118,6 +117,7 @@
 			    　<i class="fas fa-fish"></i> <%= @post.user.name %>さんの投稿をもっと見る
 			    <% end %>
 			  </div>
+			</div>
 	    </div>
 	    <div class="col-1"></div>
 	  </div>

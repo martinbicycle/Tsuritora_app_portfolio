@@ -1,6 +1,6 @@
 <% if !user_signed_in? %>
-   ナイスフィッシュ！
-   <%= post.favorites.count %>
+   ナイスフィッシュ！<i class="fas fa-fish fish_blue"></i>
+   <%= post.favorites.count %>件
 <% elsif post.favorited_by?(current_user) %>
   ナイスフィッシュ！<%= link_to post.favorites.count, post_favorites_path(post), method: :delete, remote: true, class: "fas fa-fish fish_red" %>
 <% else %>

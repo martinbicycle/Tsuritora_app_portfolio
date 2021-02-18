@@ -40,10 +40,7 @@
 	        ユーザー編集：<%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %></br>
 	        メールアドレス:<%= @user.email %>
 	      <% end %>
-	      <div class="line-it-button" data-lang="ja" data-type="share-b" data-ver="3" data-url="http://tsuritora.com" data-color="default" data-size="large" data-count="true" style="display: none;"></div>
-            <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
-	      </div>
-    </div>
+      </div>
     </div>
     <h2 class="mt-2"><span style="background-color:#eee"><%= @user.name %>さんの投稿</span></h2>
     <div class="row">

@@ -3,40 +3,31 @@
 	　<div class="row">
 	    <div class="col-1"></div>
 		　<div class="col-10">
-		　	 <div class="card">
-		    <h1 class="text-center">
-	        <%= @post.user.name %>さんの投稿
-	      </h1>
-	      <%= attachment_image_tag(@post.user, :profile_image, class: "image-circle", fallback: "no_image.png") %>
-	      <%= link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' do %>
-	        <i class="fab fa-twitter-square fa-3x"></i>
-	      <% end %>
-	      <div class="line-it-button" data-lang="ja" data-type="share-b" data-ver="3" data-url="http://tsuritora.com/posts/<%= @post.id %>" data-color="default" data-size="large" data-count="true" style="display: none;"></div>
-          <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
-	      <table>
-	        <tr><th>写真</th></tr>
-	  	    <tr><td><%= attachment_image_tag @post, :image, class: "fish-image" %></td></tr>
-	      </table>
-	      <div class="border">
-	        <tr><h3 class="border">データ</h3></tr>
-	        <table>
-	          <tr>
-	            <th>魚種：<%= @post.name %></th>
-	          </tr>
-	          <tr>
-	            <th>釣れた日：<%= @post.fish_time.strftime("%m-%d %H:%M") %></th>
-	            <th>釣り道具：<%= @tackles %><br></th>
-	          </tr>
-	          <tr>
-	            <th>ルアー：<%= @post.lure %></th>
-	    	      <th>サイズ:<%= @post.size %></th>
-	          </tr>
-	          <tr>
-	      	    <th>ひとこと</th>
-	          </tr>
-	     	    <tr><td><%= simple_format@post.body %></td>
-	        </table>
-	      </div>
+		　	<div class="card">
+			    <h1 class="text-center"><%= @post.user.name %>さんの投稿</h1>
+		      <%= attachment_image_tag(@post.user, :profile_image, class: "image-circle", fallback: "no_image.png") %>
+		        <tr><th>写真</th></tr>
+		  	    <tr><td><%= attachment_image_tag @post, :image, class: "fish-image" %></td></tr>
+	        <div>
+	        <h3 class="border">データ</h3>
+		        <table>
+		          <tr>
+		            <th>魚種：<%= @post.name %></th>
+		          </tr>
+		          <tr>
+		            <th>釣れた日：<%= @post.fish_time.strftime("%m-%d %H:%M") %></th>
+		            <th>釣り道具：<%= @tackles %><br></th>
+		          </tr>
+		          <tr>
+		            <th>ルアー：<%= @post.lure %></th>
+		    	      <th>サイズ:<%= @post.size %></th>
+		          </tr>
+		          <tr>
+		      	    <th>ひとこと</th>
+		          </tr>
+		     	    <tr><td><%= simple_format@post.body %></td></tr>
+		        </table>
+	        </div>
 	      <div>
 	     	  <% if @post.wc_before_type_cast == 1 %>
 	     	    <i class="fas fa-toilet"></i>
@@ -112,6 +103,18 @@
 					<% end %>
 			  </div>
 			  <div class="comment-btn"><%= render "comments/comment", post: @post %></div>
+			  <div class="col-1"></div>
+			  <div class="row">
+			  	<div class="col-6">
+			      <%= link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank', class: "text-right" do %>
+			        <i class="fab fa-twitter-square fa-3x"></i>
+			      <% end %>
+			  	</div>
+			  	<div class="col-6">
+			      <div class="line-it-button" data-lang="ja" data-type="share-b" data-ver="3" data-url="http://tsuritora.com/posts/<%= @post.id %>" data-color="default" data-size="large" data-count="false" style="display: none;"></div>
+	          <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+			  	</div>
+			  </div>
 				<div class="text-center mb-5">
 			    <%= link_to user_path(@post.user_id), class: "btn btn-info" do %>
 			    　<i class="fas fa-fish"></i> <%= @post.user.name %>さんの投稿をもっと見る

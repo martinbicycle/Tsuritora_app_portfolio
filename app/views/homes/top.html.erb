@@ -1,36 +1,39 @@
 <div class="background-image">
-<div class="conteiner">
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="col-9">
-      <div class="card bg-light mt-5">
-      <h1 class="text-center mt-5">ようこそ、つりトラへ</h1>
-      <p class="text-center">つりトラは釣りの情報を共有するサイトです</p><br>
-      <p class="text-center">新規登録をしなくても利用はできますが<br>
-                             投稿、詳細、管理者へのお問い合わせは<br>
-                             新規会員登録が必要になります。</p>
-　　　<p class="text-center">
-　　　   ★　マナーを守って楽しい釣りをしましょう　　<br>
-　　　   ★　釣り禁止エリアでの釣りはやめましょう　　<br>
-　　　   ★　釣り場はきれいに、ゴミは持ち帰りましょう<br>
-　　　</p>
-　　　</div>
+  <div class="conteiner">
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-10">
+        <div class="card bg-light mt-5">
+          <h1 class="text-center mt-5">ようこそ、つりトラへ</h1>
+          <p class="text-center">
+            つりトラは釣りの情報を共有するサイトです
+          </p><br>
+          <p class="text-center">
+            新規登録をしなくても利用はできますが<br>
+            投稿、管理者へ質問は<br>
+            新規会員登録が必要になります。</p>
+      　　　<p class="text-center">
+      　　　   ★マナーを守って楽しい釣りをしましょう　　<br>
+      　　　   ★釣り禁止エリアでの釣りはやめましょう　　<br>
+      　　　   ★釣り場はきれいに、ゴミは持ち帰りましょう<br>
+      　　　</p>
+  　　  　</div>
 
-　　　<div class="text-center">
-    　   <%= link_to new_user_registration_path, class: "btn btn-secondary btn-lg btn-block" do %>
-    　　    つりトラを始める（新規会員登録)
-　　  　<% end %>
+    　　　<div class="text-center">
+        　<%= link_to new_user_registration_path, class: "btn btn-secondary btn-lg btn-block" do %>
+        　　つりトラを始める（会員登録)
+    　　  　<% end %>
 
-　　　  <%= link_to new_user_session_path, class: "btn btn-warning btn-lg btn-block" do %>
-　　　    ログイン
-　　  　<% end %>
+    　　　　  <%= link_to new_user_session_path, class: "btn btn-warning btn-lg btn-block" do %>
+    　　　 　   ログイン
+    　　  　<% end %>
 
-　　  　<%= link_to users_guest_sign_in_path, method: :post, class: "btn btn-info btn-lg btn-block" do %>
-　　  　  ゲストログインはこちら
-　　  　<% end %>
-　　  </div>
+    　　  　<%= link_to users_guest_sign_in_path, method: :post, class: "btn btn-info btn-lg btn-block" do %>
+    　　  　　  ゲストログインはこちら
+    　　  　<% end %>
+    　　  </div>
+      </div>
+      <div class="col-1"></div>
     </div>
-    <div class="col-1"></div>
   </div>
-</div>
 </div>

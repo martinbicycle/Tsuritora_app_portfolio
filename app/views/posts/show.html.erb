@@ -1,117 +1,126 @@
-<div class="container border">
-　<div class="row">
-    <div class="col-1"></div>
-	　<div class="col-9">
-	    <h1 class="text-center">
-        <%= @post.user.name %>さんの投稿
-      </h1>
-      <%= attachment_image_tag(@post.user, :profile_image, class: "image-circle", fallback: "no_image.png") %>
-      <table>
-        <tr><th>写真</th></tr>
-  	    <tr><td><%= attachment_image_tag @post, :image, class: "fish-image" %></td></tr>
-      </table>
-      <div class="border">
-        <tr><h3 class="border">データ</h3></tr>
-        <table>
-          <tr>
-            <th>魚種：<%= @post.name %></th>
-          </tr>
-          <tr>
-            <th>釣れた日：<%= @post.fish_time.strftime("%m-%d %H:%M") %></th>
-            <th>釣り道具：<%= @tackles %><br></th>
-          </tr>
-          <tr>
-            <th>ルアー：<%= @post.lure %></th>
-    	      <th>サイズ:<%= @post.size %></th>
-          </tr>
-          <tr>
-      	    <th>ひとこと</th>
-          </tr>
-     	    <tr><td><%= simple_format@post.body %></td>
-        </table>
-      </div>
-      <div>
-     	  <% if @post.wc_before_type_cast == 1 %>
-     	    <i class="fas fa-toilet"></i>
-      	<% end %>
-     	  <% if @post.parking_before_type_cast == 1 %>
-     	    <i class="fas fa-parking"></i>
-     	  <% end %>
-     	  <% if @post.convenience_store_before_type_cast == 1 %>
-     	    <i class="fab fa-contao"></i>
-     	  <% end %>
-       	  <% if @post.fishing_bait_before_type_cast == 1 %>
-     	    <i class="fas fa-fish"></i>
-     	  <% end %>
-	    </div>
-	    <table>
-	      <tr>
-	      	<td>タグ：
-		        <% @post.tags.each do |tag| %>
-		          <%= tag.name %>
+<div class="background-image">
+	<div class="container">
+	　<div class="row">
+	    <div class="col-1"></div>
+		　<div class="col-10">
+		　	 <div class="card">
+		    <h1 class="text-center">
+	        <%= @post.user.name %>さんの投稿
+	      </h1>
+	      <%= attachment_image_tag(@post.user, :profile_image, class: "image-circle", fallback: "no_image.png") %>
+	      <%= link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' do %>
+	        <i class="fab fa-twitter-square fa-3x"></i>
+	      <% end %>
+	      <div class="line-it-button" data-lang="ja" data-type="share-b" data-ver="3" data-url="http://tsuritora.com/posts/<%= @post.id %>" data-color="default" data-size="large" data-count="true" style="display: none;"></div>
+          <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+	      </div>
+	      <table>
+	        <tr><th>写真</th></tr>
+	  	    <tr><td><%= attachment_image_tag @post, :image, class: "fish-image" %></td></tr>
+	      </table>
+	      <div class="border">
+	        <tr><h3 class="border">データ</h3></tr>
+	        <table>
+	          <tr>
+	            <th>魚種：<%= @post.name %></th>
+	          </tr>
+	          <tr>
+	            <th>釣れた日：<%= @post.fish_time.strftime("%m-%d %H:%M") %></th>
+	            <th>釣り道具：<%= @tackles %><br></th>
+	          </tr>
+	          <tr>
+	            <th>ルアー：<%= @post.lure %></th>
+	    	      <th>サイズ:<%= @post.size %></th>
+	          </tr>
+	          <tr>
+	      	    <th>ひとこと</th>
+	          </tr>
+	     	    <tr><td><%= simple_format@post.body %></td>
+	        </table>
+	      </div>
+	      <div>
+	     	  <% if @post.wc_before_type_cast == 1 %>
+	     	    <i class="fas fa-toilet"></i>
+	      	<% end %>
+	     	  <% if @post.parking_before_type_cast == 1 %>
+	     	    <i class="fas fa-parking"></i>
+	     	  <% end %>
+	     	  <% if @post.convenience_store_before_type_cast == 1 %>
+	     	    <i class="fab fa-contao"></i>
+	     	  <% end %>
+	       	  <% if @post.fishing_bait_before_type_cast == 1 %>
+	     	    <i class="fas fa-fish"></i>
+	     	  <% end %>
+		    </div>
+		    <table>
+		      <tr>
+		      	<td>タグ：
+			        <% @post.tags.each do |tag| %>
+			          <%= tag.name %>
+			        <% end %>
+		      	</td>
+		      </tr>
+		      <tr>
+	    	    <td><span class="favorite-btn" id="favorite-<%= @post.id %>" >
+	    	  	  <%= render "favorites/favorite-btn", post: @post %></span></td>
+	    	    <td>コメント数：<%= @post.comments.count %>件</td>
+	    	    <% if user_signed_in? %>
+			    	  <% if @post.user_id == current_user.id%>
+				        <td><%= link_to "編集", edit_post_path(@post), class: "btn btn-success" %></td>
+				        <td><%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %></td>
+				      <% end %>
 		        <% end %>
-	      	</td>
-	      </tr>
-	      <tr>
-    	    <td><span class="favorite-btn" id="favorite-<%= @post.id %>" >
-    	  	  <%= render "favorites/favorite-btn", post: @post %></span></td>
-    	    <td>コメント数：<%= @post.comments.count %>件</td>
-    	    <% if user_signed_in? %>
-		    	  <% if @post.user_id == current_user.id%>
-			        <td><%= link_to "編集", edit_post_path(@post), class: "btn btn-success" %></td>
-			        <td><%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %></td>
-			      <% end %>
-	        <% end %>
-	      </tr>
-	    </table>
-	    <script type="text/javascript">
-	    function initMap() {
+		      </tr>
+		    </table>
+		    <script type="text/javascript">
+		    function initMap() {
 
-			var test ={lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
-			var map = new google.maps.Map(document.getElementById('map'), {
-			      zoom: 15,
-			      center: test
-			      });
-			var transitLayer = new google.maps.TransitLayer();
-			transitLayer.setMap(map);
+				var test ={lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
+				var map = new google.maps.Map(document.getElementById('map'), {
+				      zoom: 15,
+				      center: test
+				      });
+				var transitLayer = new google.maps.TransitLayer();
+				transitLayer.setMap(map);
 
-			var contentString = '住所：<%= @post.address %>';
-			var infowindow = new google.maps.InfoWindow({
-			content: contentString
-			});
+				var contentString = '住所：<%= @post.address %>';
+				var infowindow = new google.maps.InfoWindow({
+				content: contentString
+				});
 
 
-			var marker = new google.maps.Marker({
-			          position:test,
-			          map: map,
-			          title: contentString
-			         });
+				var marker = new google.maps.Marker({
+				          position:test,
+				          map: map,
+				          title: contentString
+				         });
 
-			marker.addListener('click', function() {
-			infowindow.open(map, marker);
-			});
-			}
-	    </script>
-    	<script async defer
-	      src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GMAP_API_KEY'] %>&callback=initMap">
-	    </script>
-　　　<div id="map"></div>
-		  <div class="new-comment">
-				<%= form_with(model:[@post, @comment], remote: true) do |f| %>
-				  <%= f.text_area :body, rows:'5',placeholder: "コメントをここに", class: "form-control commentbtn" %>
-				  <div class="text-right">
-				    <%= f.submit "送信する", class: "btn btn-warning" %>
-				  </div>
-				<% end %>
-		  </div>
-		  <div class="comment-btn"><%= render "comments/comment", post: @post %></div>
-			<div class="text-center mb-5">
-		    <%= link_to user_path(@post.user_id), class: "btn btn-info" do %>
-		    　<i class="fas fa-fish"></i> <%= @post.user.name %>さんの投稿をもっと見る
-		    <% end %>
-		  </div>
-    </div>
-    <div class="col-1"></div>
-  </div>
+				marker.addListener('click', function() {
+				infowindow.open(map, marker);
+				});
+				}
+		    </script>
+	    	<script async defer
+		      src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GMAP_API_KEY'] %>&callback=initMap">
+		    </script>
+	　　　<div id="map"></div>
+			  <div class="new-comment">
+					<%= form_with(model:[@post, @comment], remote: true) do |f| %>
+					  <%= f.text_area :body, rows:'5',placeholder: "コメントをここに", class: "form-control commentbtn" %>
+					  <div class="text-right">
+					    <%= f.submit "送信する", class: "btn btn-warning" %>
+					  </div>
+					<% end %>
+			  </div>
+			  <div class="comment-btn"><%= render "comments/comment", post: @post %></div>
+				<div class="text-center mb-5">
+			    <%= link_to user_path(@post.user_id), class: "btn btn-info" do %>
+			    　<i class="fas fa-fish"></i> <%= @post.user.name %>さんの投稿をもっと見る
+			    <% end %>
+			  </div>
+	    </div>
+	    <div class="col-1"></div>
+	  </div>
+	</div>
 </div>
 

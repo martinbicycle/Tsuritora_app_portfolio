@@ -33,7 +33,6 @@
 }
 
 
-
 .background-lure {
   background-image: image-url("lure.jpg");
   background-size: cover;
@@ -132,6 +131,9 @@ a {
 ************************************/
 
 @media (max-width: 1056px) {
+  body {
+    width: 100%;
+  }
 
 
   .big {

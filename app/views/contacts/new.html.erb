@@ -1,12 +1,24 @@
-<div class="container">
-　<div class="row">
-　  <div class="col-1"></div>
-    <h1 class="text-center">コラムに書いてほしい内容を送ってください</h1>
-    <div class="col-10">
-      <%= form_with model: @contact do |f| %>
+<div class="background-image">
+  <div class="container">
+    <div class="bln torachan_shy fxd--rr">
+      <div class="torachansays"><p>お気軽にどうぞ！！</p>
+      </div>
+    </div>
+    <div class="card">
+      <h1 class="text-center">コラムに書いてほしい内容を送ってください</h1>
+      <% if @contact.errors.any? %>
+        <div>
+          <ul style="color: red">
+            <% @contact.errors.full_messages.each do |message| %>
+              <%= message %><br>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= form_with(model: @contact, local: true) do |f| %>
         <table class="table">
           <tr><td><%= f.label :タイトル %></td></tr>
-          <tr><td><%= f.text_field :title, autofocus: true, autocomplete: "タイトル", :placeholder => "タイトル", class: "form-control" %></td></tr>
+          <tr><td><%= f.text_field :title, autofocus: true, autocomplete: "タイトル", :placeholder => "(例)エサの選び方", class: "form-control" %></td></tr>
           <tr><td><%= f.label :内容 %></td></tr>
           <tr><td><%= f.text_area :body, autofocus: true, autocomplete: "本文", :placeholder => "(例)〇〇がわからないので教えてほしい...etc", class: "form-control" %></td></tr>
           <tr>

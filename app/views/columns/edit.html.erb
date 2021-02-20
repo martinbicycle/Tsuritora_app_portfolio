@@ -3,6 +3,15 @@
     <div class="col-1"></div>
 	　<div class="col-10">
 	    <h1 class="mt-5 text-center">コラムの編集</h1>
+	    <% if @column.errors.any? %>
+        <div>
+          <ul style="color: red">
+            <% @column.errors.full_messages.each do |message| %>
+              <%= message %><br>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 	    <%= form_with(model: @column, local: true) do |f| %>
         <table class="table">
           <tr><td><%= f.label :タイトル %></td></tr>

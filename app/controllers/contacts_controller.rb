@@ -35,7 +35,7 @@ class ContactsController < ApplicationController
     if @contact.save
       redirect_to user_path(@contact.user_id), success: "送信しました"
     else
-      redirect_to new_contact_path, alert: "正しく入力されていません"
+      render :new
     end
 
   end

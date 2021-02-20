@@ -29,8 +29,11 @@ class ColumnsController < ApplicationController
 
   def update
     @column = Column.find(params[:id])
-    @column.update(column_params)
-    redirect_to column_path(@column)
+    if @column.update(column_params)
+      redirect_to column_path(@column), success: '更新しました'
+    else
+      render :edit
+    end
 
   end
 

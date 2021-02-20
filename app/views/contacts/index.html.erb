@@ -1,32 +1,31 @@
 <div class="container">
 　<div class="row">
     <div class="col-1"></div>
-	　<div class="col-9">
+	　<div class="col-10">
 	    <h1 class="mt-5 text-center">お問い合わせ一覧</h1>
-
-        お問い合わせ件数：<%= @contacts.count %>
-      <% @contacts.each do |contact| %>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>お問い合わせタイトル</th>
-              <th></th>
-              <th>お問い合わせユーザー</th>
-              <th></th>
-              <th>確認したら✅</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><%= contact.title %></td>
-              <td><%= link_to "詳細", contact_path(contact), class: "btn btn-primary" %></td>
-              <td><%= contact.user.name %></td>
-              <td><%= link_to "詳細", user_path(contact.user_id), class: "btn btn-primary" %></td>
-              <td><%= check_box_tag :sample %></td>
-            </tr>
-          </tbody>
-        </table>
-      <% end %>
+      お問い合わせ件数：<%= @contacts.count %>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>お問い合わせタイトル</th>
+            <th></th>
+            <th>お問い合わせユーザー</th>
+            <th></th>
+            <th>確認したら✅</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @contacts.each do |contact| %>
+          <tr>
+            <td><%= contact.title %></td>
+            <td><%= link_to "詳細", contact_path(contact), class: "btn btn-primary" %></td>
+            <td><%= contact.user.name %></td>
+            <td><%= link_to "詳細", user_path(contact.user_id), class: "btn btn-primary" %></td>
+            <td><%= check_box_tag :sample %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
     <div class="col-1"></div>
   </div>

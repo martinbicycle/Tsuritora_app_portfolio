@@ -53,6 +53,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     tag_list = params[:post][:tag_names].split(',')
     @post.save_tags(tag_list)
+    @post.save_tackles(params[:id], params[:post][:tackle])
     if @post.update_attributes(post_params)
       redirect_to post_path(@post), success: "更新しました"
     else

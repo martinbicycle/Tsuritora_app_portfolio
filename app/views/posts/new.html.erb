@@ -39,17 +39,22 @@
           <tr>
             <td>
               <%= f.text_field :tag_ids, class: "form-control", id:'tag_ids',\
-              placeholder: "複数つけるには','で区切ってください" %>
+              placeholder: "複数つけるには「、」で区切ってください" %>
             </td>
           </tr>
           <tr><td><%= f.label :address, '場所' %></td></tr>
           <tr><td><%= f.text_field :address, placeholder: "紹介したい住所を入力してください", class: "form-control" %></td></tr>
           <tr>
             <td>
+              あてはまるものを選択↓<i class="fas fa-restroom"></i>トイレあり、<i class="fas fa-parking"></i>駐車場あり、<i class="fas fa-store"></i>コンビニあり、<i class="fas fa-fish"></i>エサ売り場あり
+            </td>
+          </tr>
+          <tr>
+            <td>
               <div class="form-icons">
                 <div class="form-icon">
                   <div class="toggle-icon">
-                    <i class="fas fa-toilet"></i>
+                    <i class="fas fa-restroom"></i>
                   </div>
                   <input name="post[wc]" type="hidden" value="0">
                 </div>
@@ -61,7 +66,7 @@
                 </div>
                 <div class="form-icon">
                   <div class="toggle-icon">
-                    <i class="fab fa-contao"></i>
+                    <i class="fas fa-store"></i>
                   </div>
                   <input name="post[convenience_store]" type="hidden" value="0">
                 </div>

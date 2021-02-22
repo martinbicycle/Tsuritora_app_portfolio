@@ -32,13 +32,13 @@
       </div>
 	    <div>
 	   	  <% if @post.wc_before_type_cast == 1 %>
-	   	    <i class="fas fa-toilet"></i>
+	   	    <i class="fas fa-restroom"></i>
 	    	<% end %>
 	   	  <% if @post.parking_before_type_cast == 1 %>
 	   	    <i class="fas fa-parking"></i>
 	   	  <% end %>
 	   	  <% if @post.convenience_store_before_type_cast == 1 %>
-	   	    <i class="fab fa-contao"></i>
+	   	    <i class="fas fa-store"></i>
 	   	  <% end %>
 	     	  <% if @post.fishing_bait_before_type_cast == 1 %>
 	   	    <i class="fas fa-fish"></i>
@@ -97,7 +97,7 @@
 　　<div id="map"></div>
 	  <div class="new-comment">
 			<%= form_with(model:[@post, @comment], remote: true) do |f| %>
-			  <%= f.text_area :body, rows:'5',placeholder: "コメントをここに", class: "form-control commentbtn" %>
+			  <%= f.text_area :body, rows:'5',placeholder: "コメント", class: "form-control commentbtn" %>
 			  <div class="text-right">
 			    <%= f.submit "送信する", class: "btn btn-warning" %>
 			  </div>
@@ -105,17 +105,22 @@
 	  </div>
 	  <div class="comment-btn"><%= render "comments/comment", post: @post %></div>
 	  <div class="row">
-	  	<div class="col-6">
-	      <%= link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank', class: "text-right" do %>
+	  	<div class="col-3"></div>
+	  	<div class="col-2 text-right">
+	      <%= link_to "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' do %>
 	        <i class="fab fa-twitter-square fa-3x"></i>
 	      <% end %>
 	  	</div>
-	  	<div class="col-6">
-	      <div class="line-it-button" data-lang="ja" data-type="share-b" data-ver="3" data-url="http://tsuritora.com/posts/<%= @post.id %>" data-color="default" data-size="large" data-count="false" style="display: none;"></div>
+	  	<div class="col-2 text-center">
+	      <div class="line-it-button text-center" data-lang="ja" data-type="share-b" data-ver="3" data-url="http://tsuritora.com/posts/<%= @post.id %>" data-color="default" data-size="large" data-count="false" style="display: none;"></div>
         <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
 	  	</div>
+	  	<div class="col-2 text-left">
+	  		<a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ftsuritora.com/posts/<%= @post.id %>%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">
+        <i class="fab fa-facebook-square fa-3x"></i></a>
+	  	</div>
+	  	<div class="col-3"></div>
 		</div>
-		<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Ftsuritora.com%2Fposts/<%= @post.id %>&layout=button&size=large&width=79&height=28&appId" width="79" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
 		<div class="text-center mb-5">
 	    <%= link_to user_path(@post.user_id), class: "btn btn-info" do %>
 	    　<i class="fas fa-fish"></i> <%= @post.user.name %>さんの投稿をもっと見る

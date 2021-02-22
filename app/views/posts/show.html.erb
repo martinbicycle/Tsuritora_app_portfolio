@@ -2,11 +2,10 @@
 	<div class="container">
 　	<div class="card">
 　		<div>
-	    <h1 class="text-center">
-	    	<%= attachment_image_tag(@post.user, :profile_image, class: "profile-image", fallback: "no_image.png") %>
-	    	<%= @post.user.name %>さんの投稿
-	    </h1>
-
+		    <h1 class="text-center">
+		    	<%= attachment_image_tag(@post.user, :profile_image, class: "profile-image", fallback: "no_image.png") %>
+		    	<%= @post.user.name %>さんの投稿
+		    </h1>
 　		</div>
   	    <tr><td><%= attachment_image_tag @post, :image, class: "fish-image" %></td></tr>
       <div>
@@ -17,30 +16,34 @@
           </tr>
           <tr>
             <th>釣れた日：<%= @post.fish_time.strftime("%m-%d %H:%M") %></th>
+          </tr>
+          <tr>
             <th>釣り道具：<%= @tackles %><br></th>
           </tr>
           <tr>
             <th>ルアー：<%= @post.lure %></th>
+          </tr>
+          <tr>
     	      <th>サイズ:<%= @post.size %></th>
           </tr>
         </table>
       	  <strong>ひとこと</strong>
      	    <tr><td><%= simple_format@post.body %></td></tr>
       </div>
-    <div>
-   	  <% if @post.wc_before_type_cast == 1 %>
-   	    <i class="fas fa-toilet"></i>
-    	<% end %>
-   	  <% if @post.parking_before_type_cast == 1 %>
-   	    <i class="fas fa-parking"></i>
-   	  <% end %>
-   	  <% if @post.convenience_store_before_type_cast == 1 %>
-   	    <i class="fab fa-contao"></i>
-   	  <% end %>
-     	  <% if @post.fishing_bait_before_type_cast == 1 %>
-   	    <i class="fas fa-fish"></i>
-   	  <% end %>
-		</div>
+	    <div>
+	   	  <% if @post.wc_before_type_cast == 1 %>
+	   	    <i class="fas fa-toilet"></i>
+	    	<% end %>
+	   	  <% if @post.parking_before_type_cast == 1 %>
+	   	    <i class="fas fa-parking"></i>
+	   	  <% end %>
+	   	  <% if @post.convenience_store_before_type_cast == 1 %>
+	   	    <i class="fab fa-contao"></i>
+	   	  <% end %>
+	     	  <% if @post.fishing_bait_before_type_cast == 1 %>
+	   	    <i class="fas fa-fish"></i>
+	   	  <% end %>
+			</div>
     <table>
       <tr>
       	<td>タグ：
@@ -77,7 +80,6 @@
 		content: contentString
 		});
 
-
 		var marker = new google.maps.Marker({
 		          position:test,
 		          map: map,
@@ -113,6 +115,7 @@
         <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
 	  	</div>
 		</div>
+		<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Ftsuritora.com%2Fposts/<%= @post.id %>&layout=button&size=large&width=79&height=28&appId" width="79" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
 		<div class="text-center mb-5">
 	    <%= link_to user_path(@post.user_id), class: "btn btn-info" do %>
 	    　<i class="fas fa-fish"></i> <%= @post.user.name %>さんの投稿をもっと見る

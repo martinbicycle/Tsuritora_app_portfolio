@@ -96,6 +96,15 @@
     </script>
 　　<div id="map"></div>
 	  <div class="new-comment">
+	  	<% if @post.errors.any? %>
+        <div>
+          <ul style="color: red">
+            <% @post.errors.full_messages.each do |message| %>
+              <%= message %><br>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 			<%= form_with(model:[@post, @comment], remote: true) do |f| %>
 			  <%= f.text_area :body, rows:'5',placeholder: "コメント", class: "form-control commentbtn" %>
 			  <div class="text-right">

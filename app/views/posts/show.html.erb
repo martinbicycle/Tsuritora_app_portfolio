@@ -1,6 +1,6 @@
 <div class="background-image">
 	<div class="container">
-　	<div class="card">
+　	<div class="card bg-light">
 　		<div>
 		    <h1 class="text-center">
 		    	<%= attachment_image_tag(@post.user, :profile_image, class: "profile-image", fallback: "no_image.png") %>
@@ -55,7 +55,7 @@
       <tr>
   	    <td><span class="favorite-btn" id="favorite-<%= @post.id %>" >
   	  	  <%= render "favorites/favorite-btn", post: @post %></span></td>
-  	    <td>コメント数：<%= @post.comments.count %>件</td>
+  	    <td><i class="far fa-comment"></i><%= @post.comments.count %>件</td>
   	    <% if user_signed_in? %>
 	    	  <% if @post.user_id == current_user.id%>
 		        <td><%= link_to "編集", edit_post_path(@post), class: "btn btn-success" %></td>

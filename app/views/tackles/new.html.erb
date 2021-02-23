@@ -1,18 +1,32 @@
-<div class="container">
-　<div class="row">
-    <div class="col-1"></div>
-	　<div class="col-10">
-	    <h1 class="mt-5 text-center">釣り具追加</h1>
-	    <%= form_with model: [@user, @tackle], local: true do |f| %>
-        <%= f.label :釣り具 %>
-        <%= f.text_field :name, autofocus: true, autocomplete: "釣り具", :placeholder => "ロッド名、リール名...etc", class: "form-control" %>
-        <div class="text-center">
-          <%= button_tag :type => "submit", :class =>"btn btn-primary mt-5" do %>
-            <i class="fas fa-fish"></i>追加する！
-          <% end %>
+<div class="background-image">
+  <div class="container">
+  　<div class="row">
+      <div class="col-1"></div>
+  	　<div class="col-10 card bg-light mt-5">
+  	    <h1 class="mt-5 text-center">釣り具追加</h1>
+  	    <%= form_with model: [@user, @tackle], local: true do |f| %>
+          <%= f.label :釣り具 %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "釣り具", :placeholder => "ロッド名、リール名...etc", class: "form-control" %>
+          <div class="text-center">
+            <%= button_tag :type => "submit", :class =>"btn btn-primary mt-5" do %>
+              <i class="fas fa-fish"></i>追加する！
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="bln hidari">
+        <div class="okiamisays">
+          <p>
+            追加した道具は「投稿する」<br>
+            フォームで選択できるぞ！
+        　</p>
         </div>
-      <% end %>
+      </div>
+      <div class="bln torachan_shy fxd--rr">
+        <div class="torachansays"><p>お気に入りの道具を追加しよう！</p>
+        </div>
+      </div>
+      <div class="col-1"></div>
     </div>
-    <div class="col-1"></div>
   </div>
 </div>

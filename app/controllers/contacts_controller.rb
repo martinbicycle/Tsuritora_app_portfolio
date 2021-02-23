@@ -37,9 +37,18 @@ class ContactsController < ApplicationController
     else
       render :new
     end
-
   end
 
+  def update
+     contact = Contact.find(params[:format])
+     if contact.checkflag.present?
+       contact.update(checkflag: false)
+       redirect_to contacts_path, alert: "未確認にしました"
+     else
+       contact.update(checkflag: true)
+       redirect_to contacts_path, success: "確認にしました"
+     end
+  end
 
   private
   def contact_params

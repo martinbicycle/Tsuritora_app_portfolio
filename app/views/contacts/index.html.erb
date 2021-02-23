@@ -21,7 +21,13 @@
             <td><%= link_to "詳細", contact_path(contact), class: "btn btn-primary" %></td>
             <td><%= contact.user.name %></td>
             <td><%= link_to "詳細", user_path(contact.user_id), class: "btn btn-primary" %></td>
-            <td><%= check_box_tag :sample %></td>
+            <td>
+              <% if contact.checkflag.present? %>
+                <%= button_to "確認済", contact_update_path(contact), {method: :post, class: "btn btn-info"} %>
+              <% else %>
+                <%= button_to "未確認", contact_update_path(contact), {method: :post, class: "btn btn-danger"} %>
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>

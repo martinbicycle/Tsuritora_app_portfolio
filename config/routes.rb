@@ -29,5 +29,8 @@ Rails.application.routes.draw do
   end
 
   resources :columns
+  post 'contact_update' => 'contacts#update'
+  delete 'contact_destroy' => 'contacts#destroy'
   resources :contacts, only: [:index, :show, :new, :create]
+
 end

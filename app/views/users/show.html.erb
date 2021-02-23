@@ -45,7 +45,7 @@
     <h2 class="mt-2"><span style="background-color:#eee"><%= @user.name %>さんの投稿</span></h2>
     <div class="row">
 	  <% @user.posts.each do |post| %>
-        <div>
+        <div class="col-lg-3 col-sm-12 mt-5">
 		  <div class="post_item">
 		    <div class="card bg-light">
  			  <%= link_to post_path(post) do %>
@@ -55,21 +55,19 @@
 	            <%= attachment_image_tag post.user, :profile_image, class: "profile-image", fallback: "no_image.png" %>
 	          <% end %>
 			  <div class="card-body">
-			    <table>
-				  <tr><td><%= post.user.name %></td></tr><br>
-	    	 	  <tr><td>魚種名：<%= post.name %></td></tr><br>
-	    		  <tr><td>サイズ：<%= post.size %></td></tr><br>
-	    		  <tr><td>釣った日：<%= post.fish_time.strftime("%Y-%m-%d %H:%M") %></td></tr><br>
-	    		  <tr><td><%= image_tag 'lure_icon.png', class: "lure_icon" %><%= post.lure %></td></tr><br>
-	    		  <tr>
-		    	    <td>
-		    		  <i class="fas fa-fish fish_blue"></i>
-		  	          <%= post.favorites.count %>件
-		  	          <i class="far fa-comment"></i>
-		  	          <%= post.comments.count %>件
-		    		</td>
-    		      </tr>
-				</table>
+			    <tr><td><%= post.user.name %></td></tr><br>
+    	 	    <tr><td>魚種名：<%= post.name %></td></tr><br>
+    		    <tr><td>サイズ：<%= post.size %></td></tr><br>
+    		    <tr><td>釣った日：<%= post.fish_time.strftime("%Y-%m-%d %H:%M") %></td></tr><br>
+    		    <tr><td><%= image_tag 'lure_icon.png', class: "lure_icon" %><%= post.lure %></td></tr><br>
+    		    <tr>
+	    	      <td>
+	    		    <i class="fas fa-fish fish_blue"></i>
+	  	            <%= post.favorites.count %>件
+	  	            <i class="far fa-comment"></i>
+	  	            <%= post.comments.count %>件
+	    		  </td>
+		        </tr>
 		      </div>
 		    </div>
           </div>

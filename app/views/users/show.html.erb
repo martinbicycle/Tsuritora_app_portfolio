@@ -54,12 +54,21 @@
       	      <%= link_to user_path(post.user_id) do %>
 	              <%= attachment_image_tag post.user, :profile_image, class: "profile-image", fallback: "no_image.png" %>
 	            <% end %>
-	            <%= post.user.name %>
-	            <div class="card-body">
-	  	          <h5 class="card-title">魚種名：<%= post.name %></h5>
-	  	          <p class="card-text">サイズ：<%= post.size %></p>
-	  	          <p class="card-text">釣った日：<%= post.fish_time.strftime("%Y-%m-%d %H:%M") %></p>
-	            </div>
+			        <div class="card-body">
+			    		  <tr><td><%= post.user.name %></td></tr><br>
+			    	 	  <tr><td>魚種名：<%= post.name %></td></tr><br>
+			    		  <tr><td>サイズ：<%= post.size %></td></tr><br>
+			    		  <tr><td>釣った日：<%= post.fish_time.strftime("%Y-%m-%d %H:%M") %></td></tr><br>
+			    		  <tr><td><%= image_tag 'lure_icon.png', class: "lure_icon" %><%= post.lure %></td></tr><br>
+			    		  <tr>
+				    			<td>
+				    			  <i class="fas fa-fish fish_blue"></i>
+			  	          <%= post.favorites.count %>件
+			  	          <i class="far fa-comment"></i>
+			  	          <%= post.comments.count %>件
+				    			</td>
+			    		  </tr>
+		          </div>
 		        </div>
           </div>
         </div>

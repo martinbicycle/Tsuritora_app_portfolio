@@ -17,7 +17,7 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-.background-top {
+.background-about {
   background-image: image-url("fish.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -130,6 +130,14 @@ a {
 ************************************/
 
 @media (max-width: 1056px) {
+
+.background-about {
+  background-image: image-url("sea_about.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
   body {
     width: 100%;
   }

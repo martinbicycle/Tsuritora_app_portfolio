@@ -8,9 +8,6 @@
   box-sizing: border-box;
 }
 
-.topth {
-  fontsize: 100px
-}
 
 #container{
   height: 650px;
@@ -47,93 +44,93 @@
 }
 
 .bln {
-width: 100%;
-margin: auto;
-padding: 10px;
-box-sizing: border-box;
-display: flex;
-align-items: center;
-overflow: hidden;
+  width: 100%;
+  margin: auto;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 @media (max-width:480px) {
-.bln {
-padding: 0;
-}
+  .bln {
+  padding: 0;
+  }
 }
 
 /* 左右アイコンのイメージサイズと配置 */
 .bln:before {
-content: "";
-width: 200px;
-height: 200px;
-background: no-repeat left center / contain;
-/* display: inline-block; */
+  content: "";
+  width: 200px;
+  height: 200px;
+  background: no-repeat left center / contain;
+  /* display: inline-block; */
 }
 @media (max-width:480px) {
-.bln:before {
-width: 80px;
-height: 80px;
-}
+  .bln:before {
+  width: 80px;
+  height: 80px;
+  }
 }
 
 /* 左アイコンのイメージ配置 */
 .bln.hidari:before {
-background-image: image-url("okiami.png") /*画像ファイル場所を記入*/
+  background-image: image-url("okiami.png") /*画像ファイル場所を記入*/
 }
 
 .bln.hidari {
-    animation-name: huwahuwa;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-duration: 1s;
+  animation-name: huwahuwa;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-duration: 1s;
 }
 
 .bln.torachan_happy.fxd--rr {
-    animation-name: huwahuwa;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-duration: 1s;
+  animation-name: huwahuwa;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-duration: 1s;
 }
 
 .bln.torachan_shy.fxd--rr {
-    animation-name: huwahuwa;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-duration: 1s;
+  animation-name: huwahuwa;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-duration: 1s;
 }
 
 .bln.torachan_cry.fxd--rr {
-    animation-name: huwahuwa;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-duration: 1s;
+  animation-name: huwahuwa;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-duration: 1s;
 }
 
 
 @keyframes huwahuwa {
-    0% {
-        transform: translate(0,0px);
-    }
+  0% {
+      transform: translate(0,0px);
+  }
 
-    100% {
-        transform: translate(0,-15px)
+  100% {
+      transform: translate(0,-15px)
 
-    }
+  }
 }
 
 /* 右アイコンのイメージ配置 画像*/
 .bln.torachan_happy:before {
-background-image: image-url("torachan_happy.png") /*画像ファイル場所を記入*/
+  background-image: image-url("torachan_happy.png") /*画像ファイル場所を記入*/
 }
 .bln.torachan_shy:before {
-background-image: image-url("torachan_shy.png") /*画像ファイル場所を記入*/
+  background-image: image-url("torachan_shy.png") /*画像ファイル場所を記入*/
 }
 .bln.torachan_cry:before {
-background-image: image-url("torachan_cry.png") /*画像ファイル場所を記入*/
+  background-image: image-url("torachan_cry.png") /*画像ファイル場所を記入*/
 }
 
 
@@ -147,22 +144,22 @@ background-image: image-url("torachan_cry.png") /*画像ファイル場所を記
   background-color: #fff;
 }
 @media (max-width:480px) {
-.okiamisays {
-margin: 20px;
-max-width: calc(100% - 125px);
-}
+  .okiamisays {
+  margin: 20px;
+  max-width: calc(100% - 125px);
+  }
 }
 
 /* 吹き出し口 尖ってるところのあしらい */
 .okiamisays::before {
-content: "";
-position: absolute;
-top: 50%;
-left: -16px;
-margin-top: -8px;
-border: 8px solid transparent;
-border-right: 10px solid #fff;
-z-index: 2;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -16px;
+  margin-top: -8px;
+  border: 8px solid transparent;
+  border-right: 10px solid #fff;
+  z-index: 2;
 }
 .okiamisays::after {
   content: "";
@@ -178,24 +175,23 @@ z-index: 2;
 /* 左のアイコン配置指定 吹き出し反転など */
 .bln.fxd--rr .okiamisays:before,
 .bln.fxd--rr .okiamisays:after {
-transform: scale(-1, 1);
-
+  transform: scale(-1, 1);
 }
 
 /* 左のアイコンから 吹き出し反転 */
 .bln.fxd--rr .okiamisays:before {
-left: inherit;
-right: -16px;
+  left: inherit;
+  right: -16px;
 }
 .bln.fxd--rr .okiamisays:after {
-left: inherit;
-right: -21px;
-}
+  left: inherit;
+  right: -21px;
+  }
 
 /*吹き出内の調整用*/
 .okiamisays p {
-margin: 0;
-padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /* 吹き出し中の文章アウトライン */
@@ -209,31 +205,31 @@ padding: 0;
 }
 @media (max-width:480px) {
 .torachansays {
-margin: 0;
-max-width: calc(100% - 125px);
-}
+  margin: 0;
+  max-width: calc(100% - 125px);
+  }
 }
 
 /* 吹き出し口 尖ってるところのあしらい */
 .torachansays::before {
-content: "";
-position: absolute;
-top: 50%;
-left: -16px;
-margin-top: -8px;
-border: 8px solid transparent;
-border-right: 10px solid #fff;
-z-index: 2;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -16px;
+  margin-top: -8px;
+  border: 8px solid transparent;
+  border-right: 10px solid #fff;
+  z-index: 2;
 }
 .torachansays::after {
-content: "";
-position: absolute;
-top: 50%;
-left: -21px;
-margin-top: -9px;
-border: 9px solid transparent;
-border-right: 12px solid #fff;
-z-index: 1;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -21px;
+  margin-top: -9px;
+  border: 9px solid transparent;
+  border-right: 12px solid #fff;
+  z-index: 1;
 }
 
 /* 右のアイコン配置指定 吹き出し反転など */

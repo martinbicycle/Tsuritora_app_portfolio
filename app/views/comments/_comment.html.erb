@@ -1,20 +1,22 @@
 <% post.comments.each do |comment| %>
-  <table>
-    <tr>
-      <td>
-        <%= link_to user_path(comment.user_id) do %>
-          <%= attachment_image_tag comment.user, :profile_image, class: "profile-image", fallback: "no_image.png" %>
-        <% end %>
-      </td>
-      <td><h6><%= comment.body %></h6></td>
-      <td><%= comment.created_at.strftime('%m/%d') %></td>
-      <td>
-        <% if comment.user == current_user %>
-          <div class="comment-delete">
-            <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-danger ml-5" %>
-          </div>
-        <% end %>
-      </td>
-    </tr>
-  </table>
+    <table class="mt-5">
+      <tr>
+        <td>
+          <%= link_to user_path(comment.user_id) do %>
+            <%= attachment_image_tag comment.user, :profile_image, class: "profile-image", fallback: "no_image.png" %>
+          <% end %>
+        </td>
+        <div class="row">
+          <td class="col-lg-8 col-sm-12"><h6><%= comment.body %></h6></td>
+          <td><%= comment.created_at.strftime('%m/%d') %></td>
+          <td class="col-lg-4 col-sm-12">
+            <% if comment.user == current_user %>
+              <div class="comment-delete">
+                <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-danger ml-5" %>
+              </div>
+            <% end %>
+          </td>
+        </div>
+      </tr>
+    </table>
 <% end %>

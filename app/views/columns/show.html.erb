@@ -1,22 +1,24 @@
-<div class="container">
-　<div class="row">
-	  <div class="col-2"></div>
-　  <div class="col-8">
-      <h1 class="mt-5 text-center">コラム詳細</h1>
-
-      <table class="table">
-        <tr><td>タイトル</td></tr>
-        <tr><td><%= @column.title  %></td></tr>
-        <tr><td><%= attachment_image_tag @column, :image, class: "image" %></td></tr>
-        <tr><td><%= simple_format @column.body %></td></tr>
-      </table>
-        <%= link_to "他のコラムを見る", columns_path, class: "btn btn-info mb-4 ml-4" %>
-      	<% if admin_signed_in?%>
-		      <td><%= link_to "編集", edit_column_path(@column), class: "btn btn-success" %></td>
-		      <td><%= link_to "削除", column_path(@column), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %></td>
-	    	<% end %>
-
-
+<div class="background-image">
+  <div class="container card">
+  　<div class="row">
+  	  <div class="col-1"></div>
+  　  <div class="col-10">
+        <h1 class="mt-5 text-center">コラム詳細</h1>
+        <table class="table">
+          <tr><td>タイトル</td></tr>
+          <tr><td><%= @column.title  %></td></tr>
+          <tr><td><%= attachment_image_tag @column, :image, class: "image" %></td></tr>
+          <tr><td><%= simple_format @column.body %></td></tr>
+        </table>
+        <div class="text-center">
+          <%= link_to "他のコラムを見る", columns_path, class: "btn btn-info mb-5" %>
+        </div>
+        	<% if admin_signed_in?%>
+  		      <td><%= link_to "編集", edit_column_path(@column), class: "btn btn-success" %></td>
+  		      <td><%= link_to "削除", column_path(@column), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %></td>
+  	    	<% end %>
+      </div>
+      <div class="col-1"></div>
     </div>
   </div>
 </div>

@@ -1,37 +1,37 @@
-<div class="container">
-  <div class="row">
+<div class="background-image">
+	<div class="container card bg-light">
 		<%= form_with model: @user, local: true do |f| %>
-		  <div class="col-lg-6 ml-5 col-sm-12 mt-5">
-		    <h2>ユーザー編集</h2>
-		    <tr><td><%= f.label :写真 %></td></tr>
-		    <tr>
+	    <h2>ユーザー編集</h2>
+	    <tr><td><%= f.label :写真 %></td></tr>
+	    <tr>
 			  <td>
 	        <div id="btn"><i class="fas fa-plus-circle fa-3x circle_color"></i></div>
 	          <%= f.attachment_field :profile_image, id: "files" %>
 	        <input type="text" id="filename" placeholder="選択されていません" readonly />
 			  </td>
-		    </tr>
-		    <tr><td><%= f.label :ニックネーム %></td></tr>
-		    <tr><td><%= f.text_field :name, class: "form-control" %></td></tr>
-		    <tr><td><%= f.label :釣り歴 %></td></tr>
-	  	  <tr><td><%= f.text_field :fishing_history, class: "form-control" %></td></tr>
-		    <tr><td><%= f.label :自己紹介文 %></td></tr>
-		    <tr><td><%= f.text_area :introduction, class: "form-control" %></td></tr>
-		    <%= f.submit :更新, class: "btn btn-primary btn-block mt-5" %>
-		  </div>
+	    </tr>
+	    <tr><td><%= f.text_field :name, class: "form-control mt-5" %></td></tr>
+	    <tr><td><%= f.label :釣り歴 %></td></tr>
+  	  <tr><td><%= f.text_field :fishing_history, class: "form-control" %></td></tr>
+	    <tr><td><%= f.label :自己紹介文 %></td></tr>
+	    <tr><td><%= f.text_area :introduction, class: "form-control" %></td></tr>
+	    <%= f.submit :更新, class: "btn btn-primary btn-block mt-5" %>
 		<% end %>
-    <div class="col-lg-6 col-sm-12 mt-5">
-      <h4>釣り具一覧</h4>
-	    <% @tackles.each do |tackle| %>
-		    <table class="table">
-				  <tr>
-						<th><div><%= tackle.name %></div></th>
-						<td></td>
-				    <td><%= link_to "削除",user_tackle_path(@user,tackle), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %></td>
-				  </tr>
-				</table>
-	    <% end %>
+    <h4>釣り具一覧</h4>
+    <% @tackles.each do |tackle| %>
+    <div class="row">
+    	<table class="table">
+			  <tr>
+					<th class="col-6"><%= tackle.name %></th>
+					<td></td>
+					<td></td>
+			    <td class="col-6">
+			    	<%= link_to "削除",user_tackle_path(@user,tackle), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger mr-5" %>
+			    </td>
+			  </tr>
+			</table>
+    </div>
+    <% end %>
 	  <%= link_to "タックル追加", new_user_tackle_path(@user), class: "btn btn-info" %>
     </div>
   </div>
-</div>

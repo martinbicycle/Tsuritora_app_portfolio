@@ -43,10 +43,10 @@ class ContactsController < ApplicationController
      contact = Contact.find(params[:format])
      if contact.checkflag.present?
        contact.update(checkflag: false)
-       redirect_to contacts_path, alert: "未確認にしました"
+       redirect_to contacts_path, alert: "未確認に更新しました"
      else
        contact.update(checkflag: true)
-       redirect_to contacts_path, success: "確認にしました"
+       redirect_to contacts_path, success: "確認済に更新しました"
      end
   end
 

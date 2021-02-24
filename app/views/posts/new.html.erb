@@ -42,11 +42,17 @@
               placeholder: "複数つけるには「,」で区切ってください" %>
             </td>
           </tr>
-          <tr><td><%= f.label :address, '場所' %></td></tr>
-          <tr><td><%= f.text_field :address, placeholder: "紹介したい住所を入力してください", class: "form-control" %></td></tr>
+          <tr><td><%= f.label :address, '住所' %></td></tr>
           <tr>
             <td>
-              あてはまるものを選択↓<i class="fas fa-restroom"></i>トイレあり、<i class="fas fa-parking"></i>駐車場あり、<i class="fas fa-store"></i>コンビニあり、<i class="fas fa-fish"></i>エサ売り場あり
+              <%= f.select :state, Post.states.keys, {prompt: '選択してください'} %>
+              <%= f.text_field :address, placeholder: "住所", class: "form-control" %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              近隣情報　有りの場合はクリック↓<br>
+              <i class="fas fa-restroom"></i>トイレあり、<i class="fas fa-parking"></i>駐車場あり、<i class="fas fa-store"></i>コンビニあり、<i class="fas fa-fish"></i>エサ売り場あり
             </td>
           </tr>
           <tr>

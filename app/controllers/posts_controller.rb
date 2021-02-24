@@ -76,7 +76,7 @@ class PostsController < ApplicationController
       params[:post][:fishing_bait] = params[:post][:fishing_bait].to_i
       params.require(:post).permit(
         :name, :body, :image, :size, :fish_time,
-        :address, :latitude, :longitude, :lure,
+        :state, :address, :latitude, :longitude, :lure,
         :wc, :parking, :convenience_store, :fishing_bait)
     end
 

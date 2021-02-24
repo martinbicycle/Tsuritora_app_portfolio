@@ -6,6 +6,7 @@ class SearchController < ApplicationController
 		@method = params[:method]
 		if @model == 'post'
 			@records = Post.search_for(@content, @method)
+
 		elsif @model == 'column'
 			@records = Column.search_for(@content, @method)
 		elsif @model == 'tag'

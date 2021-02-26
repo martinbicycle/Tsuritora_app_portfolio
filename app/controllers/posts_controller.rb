@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
-    @posts = Post.page(params[:page]).per(20)
+    @posts = Post.page(params[:page]).per(6)
   end
 
   def show

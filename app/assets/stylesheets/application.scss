@@ -17,6 +17,22 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+.page-item.active .page-link {
+  background-color: #5bb3d2 !important;
+  border-color: #5bb3d2;
+}
+
+.page-link {
+  color: #5bb3d2;
+}
+
+.pagenation-center nav {
+  width: 190px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 50px;
+}
+
 .background-about {
   background-image: image-url("fish.jpg");
   background-size: cover;

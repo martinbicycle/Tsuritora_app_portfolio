@@ -8,6 +8,10 @@
 		    </h1>
 　		</div>
   	    <tr><td><%= attachment_image_tag @post, :image, class: "fish-image" %></td></tr>
+  	    <div class="tag-box">
+				<% @post.tags.each do |tag| %>
+				  <span class="label"><%= tag.name %></span>
+				<% end %>
       <div>
         <h3 class="border">データ</h3>
         <table>
@@ -30,8 +34,20 @@
           	<th><%= @post.state %></th>
           </tr>
         </table>
-      	  <strong>ひとこと</strong>
-     	    <tr><td><%= simple_format@post.body %></td></tr>
+    	  <strong>ひとこと</strong>
+   	    <tr><td><%= simple_format@post.body %></td></tr>
+   	    <% if @post.score.present? %>
+   	    トラちゃん評価
+ 	    　　<% if @post.score >=0.7 %>
+          　<%= image_tag 'torachan_shy.png', class: 'score' %>
+        　<% elsif @post.score >= 0 %>
+        　　<%= image_tag 'torachan_happy.png', class: 'score' %>
+        　<% elsif @post.score < -0.7 %>
+          　<%= image_tag 'torachan_angry.png', class: 'score' %>
+        　<% elsif @post.score < 0 %>
+          　<%= image_tag 'torachan_cry.png', class: 'score' %>
+        　<% end %>
+   	  　<% end %>
       </div>
 	    <div>
 	   	  <% if @post.wc_before_type_cast == 1 %>
@@ -49,10 +65,7 @@
 			</div>
     <table>
       <tr>
-      	<td>タグ：
-	        <% @post.tags.each do |tag| %>
-	          <%= tag.name %>
-	        <% end %>
+      	<td>
       	</td>
       </tr>
       <tr>
@@ -95,9 +108,9 @@
 		}
     </script>
   	<script async defer
-      src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GMAP_API_KEY'] %>&callback=initMap">
+      src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap">
     </script>
-    <% if @post.address.present? %>
+    <% unless @post.latitude.nil? %>
 　　  <div id="map"></div>
 　　<% end %>
 	  <div class="new-comment">

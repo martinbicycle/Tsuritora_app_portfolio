@@ -23,6 +23,7 @@ class PostsController < ApplicationController
   def create
     @tackles = current_user.tackles
     @post = Post.new(post_params)
+    @post.score = Language.get_data(post_params[:body])
     tag_list = params[:post][:tag_ids].split(',')
     @post.user_id = current_user.id
     if @post.save
@@ -51,6 +52,7 @@ class PostsController < ApplicationController
   def update
     @tackles = current_user.tackles
     @post = Post.find(params[:id])
+    @post.score = Language.get_data(post_params[:body])
     tag_list = params[:post][:tag_names].split(',')
     @post.save_tags(tag_list)
     @post.save_tackles(params[:id], params[:post][:tackle])

@@ -37,19 +37,18 @@
       　<div class="image5"></div>
   　   </div>
     </div>
-  　　　<div class="sign">
-      　<%= link_to new_user_registration_path, class: "btn btn-secondary btn-block" do %>
-      　　つりトラを始める（会員登録)
-  　　  　<% end %>
+  　<div class="sign">
+      <%= link_to new_user_registration_path, class: "btn btn-secondary btn-block" do %>
+  　　    つりトラを始める（会員登録)
+  　　　<% end %>
+  
+  　　　  <%= link_to new_user_session_path, class: "btn btn-warning btn-block" do %>
+  　　    ログイン
+  　　　<% end %>
 
-  　　　　  <%= link_to new_user_session_path, class: "btn btn-warning btn-block" do %>
-  　　　 　   ログイン
-  　　  　<% end %>
-
-  　　  　<%= link_to users_guest_sign_in_path, method: :post, class: "btn btn-info btn-block" do %>
-  　　  　　ゲストログインはこちら
-  　　  　<% end %>
-  　　  </div>
+  　　　<%= link_to users_guest_sign_in_path, method: :post, class: "btn btn-info btn-block" do %>
+  　　  　ゲストログインはこちら
+  　　　<% end %>
     </div>
   </div>
 </div>

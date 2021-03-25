@@ -4,12 +4,12 @@
 	　<div class="col-8">
 	    <h1 class="mt-5 text-center">お問い合わせ内容</h1>
 	    <table class="table">
-	    	<tr>
-	    		<th>お問い合わせ日時</th>
-	    	</tr>
-	    	<tr>
-	    		<td><%= @contact.created_at.strftime("%m-%d %H:%M") %></td>
-	    	</tr>
+    	  <tr>
+    	    <th>お問い合わせ日時</th>
+    	  </tr>
+    	  <tr>
+    		<td><%= @contact.created_at.strftime("%m-%d %H:%M") %></td>
+    	  </tr>
 	      <tr>
 	        <th>問い合わせユーザー名</th>
 	      </tr>
@@ -30,9 +30,9 @@
 	      </tr>
 	    </table>
 	    <div class="text-center">
-	    	<%= link_to "お問い合わせ一覧へ戻る", contacts_path, class: "btn btn-info" %>
+	      <%= link_to "お問い合わせ一覧へ戻る", contacts_path, class: "btn btn-info" %>
 	    </div>
-    </div>
+      </div>
     <div class="col-2"></div>
   </div>
 </div>
